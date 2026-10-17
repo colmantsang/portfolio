@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Colman's Portfolio!</title>
+  <meta name="description" content="Colman Tsang — Senior Product Designer, experienced in building data-heavy tools for subject matter experts.">
+  <link rel="icon" href="assets/avatar.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=Inter:wght@500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a href="#" class="nav-avatar" aria-label="Home">
+        <img src="assets/avatar.png" alt="Colman" width="64" height="64">
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <!-- TODO: replace with your real email address -->
+        <a href="mailto:hello@example.com" class="icon" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4.75" y="5.75" width="14.5" height="12.5" rx="2"/>
+            <path d="M5.5 6.5 12 12.25 18.5 6.5"/>
+          </svg>
+        </a>
+        <!-- TODO: replace with your LinkedIn profile URL -->
+        <a href="https://www.linkedin.com/" class="icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="hero">
+      <h1>Hey, I’m Colman!</h1>
+      <p>Senior Product Designer, experienced in building data-heavy tools for subject matter experts</p>
+    </section>
+
+    <section id="projects" class="projects">
+      <a href="#" class="card">
+        <div class="frame">
+          <video src="assets/govgig.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <h2>Mobcoder x GovGig</h2>
+        <p>I helped design an AI-powered federal construction contracting platform that handles project procurement, management, and delivery.</p>
+      </a>
+
+      <a href="#" class="card">
+        <div class="frame frame--tall">
+          <video src="assets/placeholder.mp4" poster="assets/placeholder-poster.jpg" muted loop playsinline preload="metadata"></video>
+        </div>
+        <h2>Ministry of Labour - Government of Ontario</h2>
+        <p>I designed digital tools for Canadians seeking employment through resources, tools, and skills training.</p>
+      </a>
+
+      <a href="#" class="card">
+        <div class="frame frame--tall">
+          <video src="assets/placeholder.mp4" poster="assets/placeholder-poster.jpg" muted loop playsinline preload="metadata"></video>
+        </div>
+        <h2>iConnectED</h2>
+        <p>I designed a learning platform aiding underserved communities in Canada with the help of AI-powered chatbots.</p>
+      </a>
+    </section>
+  </main>
+
+  <script>
+    // Cards without autoplay preview their video on hover
+    document.querySelectorAll('.card').forEach(card => {
+      const video = card.querySelector('video:not([autoplay])');
+      if (!video) return;
+      card.addEventListener('mouseenter', () => video.play().catch(() => {}));
+      card.addEventListener('mouseleave', () => video.pause());
+    });
+  </script>
+</body>
+</html>
