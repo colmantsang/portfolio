@@ -314,3 +314,182 @@ body.plain { background-image: none; }
   .cs-text p, .cs-research .body { font-size: 18px; }
   .features--ds { grid-template-columns: 1fr; }
 }
+
+/* ---- ontario.html: tabs, info cards, annotated screens ---- */
+.cs-tabs {
+  display: flex;
+  gap: 6px;
+  width: fit-content;
+  max-width: calc(100% - 48px);
+  margin: 64px auto 0;
+  padding: 6px;
+  background: var(--surface);
+  border-radius: 999px;
+  scroll-margin-top: 130px;
+}
+.cs-tabs button {
+  padding: 12px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  font: 600 17px Figtree, sans-serif;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.cs-tabs button:hover { color: var(--blue); }
+.cs-tabs button[aria-selected="true"] {
+  background: #fff;
+  color: var(--blue);
+  box-shadow: 0 4px 14px rgba(0, 45, 70, 0.12);
+}
+.cs-tabs button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.cs-text--first { margin-top: 56px; }
+.cs-panel-title { font-size: 40px !important; }
+.cs-panel .cs-summary { margin-top: 40px; }
+.cs-text h3 {
+  margin: 32px 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+}
+.cs-text h2 + h3 { margin-top: 20px; }
+
+.goals {
+  margin: 12px 0 0;
+  padding-left: 26px;
+  display: grid;
+  gap: 10px;
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+/* Three-up info cards */
+.cards-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1040px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+.info-card {
+  padding: 28px;
+  background: var(--card);
+  border-radius: 20px;
+}
+.info-card h3 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--blue);
+}
+.info-card p, .info-card ul { margin: 10px 0 0; font-size: 18px; line-height: 1.4; }
+.info-card ul { padding-left: 20px; display: grid; gap: 6px; }
+.info-card--bad { background: var(--surface); }
+.info-card--bad h3::before { content: "✕"; margin-right: 10px; color: #c0392b; }
+
+.callout {
+  max-width: 800px;
+  margin: 24px auto 0;
+  padding: 28px 32px;
+  border-left: 4px solid var(--blue);
+  background: #fff;
+  border-radius: 0 16px 16px 0;
+  box-shadow: 0 10px 28px rgba(0, 45, 70, 0.1);
+}
+.callout p { margin: 0; font-size: 20px; line-height: 1.4; }
+.callout .callout-label { margin-bottom: 8px; font-size: 16px; font-weight: 600; color: var(--muted); }
+
+/* Image variants */
+.features--narrow { max-width: 848px; }
+.feature--plain { padding: 16px; }
+.feature--plain img { aspect-ratio: auto; border: 0; background: none; }
+.feature img.contain { aspect-ratio: auto; height: auto; object-fit: contain; }
+
+.cs-wide {
+  max-width: 1040px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+.cs-wide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 24px;
+  background: var(--surface);
+  border-radius: 20px;
+}
+.cs-wide figcaption, .phone figcaption {
+  margin-top: 14px;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+/* Phone screen beside its notes */
+.annotated, .showcase-row {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  align-items: start;
+  gap: 48px;
+  max-width: 848px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+.annotated--wide { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); max-width: 1040px; }
+.showcase-row { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); max-width: 1232px; align-items: center; }
+.phone { margin: 0; }
+.phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 16px 32px rgba(0, 45, 70, 0.18);
+}
+.notes { position: sticky; top: 140px; }
+.showcase-row .notes { position: static; }
+.notes h3 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  color: var(--blue);
+}
+.notes ul { margin: 16px 0 0; padding-left: 22px; display: grid; gap: 14px; font-size: 19px; line-height: 1.4; }
+
+.marks { list-style: none; padding-left: 0 !important; }
+.marks li { position: relative; padding-left: 32px; }
+.marks li::before { position: absolute; left: 0; font-weight: 700; }
+.marks--bad li::before { content: "✕"; color: #c0392b; }
+.marks--good li::before { content: "✓"; color: #1e8449; }
+.cs-text .marks { margin: 12px 0 0; display: grid; gap: 12px; font-size: 20px; line-height: 1.4; }
+
+.key-features { margin: 16px 0 0; }
+.key-features dt { margin-top: 16px; font-weight: 700; font-size: 19px; }
+.key-features dd { margin: 4px 0 0; font-size: 18px; line-height: 1.4; color: var(--ink); }
+
+/* Row of four phone screens */
+.phones {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1040px;
+  margin: 40px auto 0;
+  padding: 0 24px;
+}
+
+@media (max-width: 760px) {
+  .cs-tabs { width: auto; }
+  .cs-tabs button { flex: 1; padding: 10px 12px; font-size: 15px; }
+  .cs-panel-title { font-size: 30px !important; }
+  .cards-3 { grid-template-columns: 1fr; }
+  .annotated, .annotated--wide, .showcase-row { grid-template-columns: 1fr; gap: 24px; }
+  .annotated .phone { max-width: 280px; }
+  .notes { position: static; }
+  .phones { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .cs-wide img { padding: 12px; }
+  .goals, .cs-text .marks { font-size: 18px; }
+}

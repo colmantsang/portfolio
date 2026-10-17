@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Government of Ontario · Colman's Portfolio</title>
+  <meta name="description" content="Government of Ontario case study — the Employment Service Questionnaire and a staff onboarding application.">
+  <link rel="icon" href="assets/avatar.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&family=Inter:wght@500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="case-study.css">
+</head>
+<body class="plain">
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-avatar" aria-label="Home">
+        <img src="assets/avatar.png" alt="Colman" width="64" height="64">
+      </a>
+      <div class="nav-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#projects">Projects</a>
+        <!-- TODO: replace with your real email address -->
+        <a href="mailto:hello@example.com" class="icon" aria-label="Email">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4.75" y="5.75" width="14.5" height="12.5" rx="2"/>
+            <path d="M5.5 6.5 12 12.25 18.5 6.5"/>
+          </svg>
+        </a>
+        <!-- TODO: replace with your LinkedIn profile URL -->
+        <a href="https://www.linkedin.com/" class="icon" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>
+          </svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="cs">
+    <section class="cs-hero cs-hero--stacked">
+      <p class="eyebrow">Government of Ontario · Internship</p>
+      <h1>Built experiences &amp; interface systems that helped Ontarians access jobs, resources, and skills training quickly and efficiently</h1>
+      <p class="lead">Ministry of Labour, Immigration, Training and Skills Development · May to August 2022</p>
+    </section>
+
+    <figure class="cs-showcase">
+      <img src="assets/ontario/banner.png" alt="Redesigned Employment Service Questionnaire screens on desktop and mobile">
+    </figure>
+
+    <div class="cs-tabs" role="tablist" aria-label="Projects on this page">
+      <button role="tab" id="tab-esq" aria-controls="esq" aria-selected="true">Employment Service Questionnaire</button>
+      <button role="tab" id="tab-onboarding" aria-controls="onboarding" aria-selected="false">Staff Onboarding</button>
+    </div>
+
+    <!-- ===================== Employment Service Questionnaire ===================== -->
+    <div class="cs-panel" id="esq" role="tabpanel" aria-labelledby="tab-esq">
+      <section class="cs-text cs-text--first">
+        <h2 class="cs-panel-title">Employment Service Questionnaire</h2>
+        <p>Creating an easy to use and trustworthy questionnaire experience for Ontarians seeking employment.</p>
+      </section>
+
+      <section class="cs-summary" aria-label="Quick summary">
+        <div class="cs-summary-head">
+          <span>Quick-summary</span>
+          <span class="muted">90-sec read</span>
+        </div>
+        <dl>
+          <dt>The Issue</dt>
+          <dd>Generic, text-heavy emails with little Ontario branding led clients to a questionnaire that wasn't mobile-friendly.</dd>
+          <dt>My Job</dt>
+          <dd>Re-design the emails and questionnaire web pages a client sees after enrolling in the program.</dd>
+          <dt>Responsibilities</dt>
+          <dd>UX/UI Design, User Research, Prototyping, Email Design</dd>
+          <dt>Team</dt>
+          <dd>Colman Tsang, Romina Esparza</dd>
+          <dt>Results</dt>
+          <dd>A mobile-first, on-brand experience that management loved, shipped and handed over to the development team.</dd>
+        </dl>
+      </section>
+
+      <section class="cs-text">
+        <h2>An overview</h2>
+        <p>The employment service questionnaire was part of a program that operates alongside Employment Ontario offices. My role was to re-design the email and questionnaire web pages that a client would see upon enrolling in the program. This connected process involved multiple areas of government working together to develop and design a coherent machine for external providers.</p>
+      </section>
+
+      <section class="cs-text">
+        <h2>Connecting service providers with busy individuals</h2>
+      </section>
+      <section class="features features--narrow">
+        <figure class="feature feature--plain"><img src="assets/ontario/esq-intro-1.png" alt="Phone inbox showing the Employment Status Questionnaire email from the Government of Ontario"></figure>
+        <figure class="feature feature--plain"><img src="assets/ontario/esq-intro-2.png" alt="Redesigned questionnaire email with Employment Ontario branding"></figure>
+      </section>
+
+      <section class="cs-research">
+        <h2>The problem, <strong>why weren't clients completing the questionnaire?</strong></h2>
+        <p class="lead">The existing emails looked like generic, text-heavy messages with little Ontario branding, and the questionnaire itself wasn't mobile-friendly. We learned a few problems had to be addressed:</p>
+      </section>
+      <section class="cards-3">
+        <div class="info-card">
+          <h3>Mobile first design</h3>
+          <p>We focused on mobile first because clients would use phones over computers.</p>
+        </div>
+        <div class="info-card">
+          <h3>Valuable data lost</h3>
+          <p>Important data points were not collected because people didn't find the site usable.</p>
+        </div>
+        <div class="info-card">
+          <h3>Untrustworthy branding</h3>
+          <p>The entire process had outdated branding and designs that did not align with Ontario.</p>
+        </div>
+      </section>
+      <section class="callout">
+        <p class="callout-label">These insights helped us conclude that…</p>
+        <p>A complete re-haul of the initial email design, and a re-design of the included questionnaire using Ontario's branding and design systems, was necessary.</p>
+      </section>
+
+      <section class="cs-text">
+        <h2>An overview of the previous experience</h2>
+      </section>
+      <section class="features">
+        <figure class="feature">
+          <img class="contain" src="assets/ontario/esq-old-email.png" alt="Previous text-heavy questionnaire email">
+          <figcaption>A typical email that a client would receive</figcaption>
+        </figure>
+        <figure class="feature">
+          <img class="contain" src="assets/ontario/esq-old-question.png" alt="Previous desktop questionnaire fields">
+          <figcaption>The questionnaire fields that clients would respond to</figcaption>
+        </figure>
+      </section>
+
+      <section class="cs-text">
+        <h2>Understanding the old designs, why was it not ideal?</h2>
+      </section>
+      <section class="cards-3">
+        <div class="info-card info-card--bad">
+          <h3>Text-heavy</h3>
+          <p>The text had no visual hierarchy, often leading to clients missing important pieces of information.</p>
+        </div>
+        <div class="info-card info-card--bad">
+          <h3>No icons</h3>
+          <p>The entire process had little to no visual cues. Icons served as a great tool to help visualize key points.</p>
+        </div>
+        <div class="info-card info-card--bad">
+          <h3>Desktop first design</h3>
+          <p>Clients were often on-the-go, meaning we needed a mobile-first approach.</p>
+        </div>
+      </section>
+
+      <section class="cs-text">
+        <h2>The next step: creating a mobile first experience</h2>
+        <h3>Goals</h3>
+        <ol class="goals">
+          <li>Re-design the pre-questionnaire emails according to ministry and government guidelines.</li>
+          <li>Apply mobile-first design strategies and usability to the client-facing questionnaire website.</li>
+        </ol>
+        <h3>Research</h3>
+        <p>Mobile surveys and questionnaires are a popular method of data collection. I conducted a competitive analysis of popular tools like SurveyMonkey, Google Forms and external surveys. I also analyzed internal government tools such as the Ontario Design System and Canada's Federal Design guidelines.</p>
+        <h3>What did I learn?</h3>
+        <ol class="goals">
+          <li>Design guidelines were useful when aligning an email template designed for the masses.</li>
+          <li>Well designed questionnaires open users up to answering questions in ways they may not have thought about.</li>
+          <li>Using both icons and buttons made text easier to digest, as there was less to read.</li>
+        </ol>
+      </section>
+
+      <section class="cs-text">
+        <h2>Exploring the refreshed designs</h2>
+      </section>
+      <section class="annotated">
+        <figure class="phone"><img src="assets/ontario/esq-inbox.png" alt="Redesigned inbox view of the questionnaire email"></figure>
+        <div class="notes">
+          <h3>Inbox</h3>
+          <ul>
+            <li>To capture the client's attention from the inbox, emojis were used in the email header.</li>
+            <li>Official Government of Ontario logos and branding were used in the profile picture.</li>
+          </ul>
+        </div>
+      </section>
+      <section class="annotated">
+        <figure class="phone"><img src="assets/ontario/esq-email.png" alt="Full redesigned questionnaire email"></figure>
+        <div class="notes">
+          <h3>Email</h3>
+          <ul>
+            <li>Emphasized text hierarchy to help prioritize what a client needed for their next steps.</li>
+            <li>Re-designed banner to align with Ontario's official branding and encourage client trust.</li>
+            <li>Clear call-to-action button, encouraging clients to proceed with the questionnaire.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cs-text">
+        <h2>Updated designs of the questionnaire web page</h2>
+      </section>
+      <section class="phones">
+        <figure class="phone"><img src="assets/ontario/esq-form-1.png" alt="Questionnaire welcome screen"></figure>
+        <figure class="phone"><img src="assets/ontario/esq-form-2.png" alt="Date of birth question"></figure>
+        <figure class="phone"><img src="assets/ontario/esq-form-3.png" alt="Questionnaire pop-up question"></figure>
+        <figure class="phone"><img src="assets/ontario/esq-form-4.png" alt="Questionnaire pop-up confirmation"></figure>
+      </section>
+      <section class="cs-text">
+        <h3>Key updates: adapting Ontario's Design System kit</h3>
+        <p>The main changes involved applying Ontario's design system to the questionnaire. I also followed mobile design best practices to create a more engaging mobile experience. A single-page-per-action design was adopted, along with call-to-action buttons and clearer UX language throughout the questionnaire.</p>
+      </section>
+
+      <section class="cs-text">
+        <h2>The overall impact</h2>
+        <p>I'm happy to say that internal management was over the moon about this re-design. The project has since shipped and been handed over to the development team, where it has been in development since I left. When the live product launches, it will help transform the experience for Ontario's employment office clients across the province.</p>
+      </section>
+
+      <section class="cs-text">
+        <h2>Takeaways &amp; lessons learnt</h2>
+        <p>Working with the various teams on this project taught me the importance of mobile-first design. I also learned that working within existing design systems, such as the Government of Ontario's, has many pros and cons that I had to learn to design around.</p>
+      </section>
+    </div>
+
+    <!-- ===================== Staff Onboarding ===================== -->
+    <div class="cs-panel" id="onboarding" role="tabpanel" aria-labelledby="tab-onboarding">
+      <section class="cs-text cs-text--first">
+        <h2 class="cs-panel-title">Staff Onboarding Application</h2>
+        <p>During my time at the Government of Ontario, I worked in the Ministry of Labour, Immigration, Training and Skills Development. My first month started with a lot of training material and learning how the internal systems worked, which let me excel at the projects I completed across various sub-teams over the following three months.</p>
+        <p>Each project had different goals, but the over-arching theme was how both users and clients interact with employment services. This uncovered a problem that had to be addressed: onboarding new hires and interns.</p>
+      </section>
+
+      <section class="cs-summary" aria-label="Quick summary">
+        <div class="cs-summary-head">
+          <span>Quick-summary</span>
+          <span class="muted">90-sec read</span>
+        </div>
+        <dl>
+          <dt>The Issue</dt>
+          <dd>New hires were onboarded with a pile of old slide decks and PDFs sent over Teams chats.</dd>
+          <dt>My Job</dt>
+          <dd>Design an onboarding platform on Microsoft PowerApps with the checklist and resources a new hire needs.</dd>
+          <dt>Responsibilities</dt>
+          <dd>UI Design, UX Research, Prototyping, Presentation Compiling &amp; Designing</dd>
+          <dt>Results</dt>
+          <dd>High-fidelity prototypes that managers loved, partially built on PowerApps and handed off to development.</dd>
+        </dl>
+      </section>
+
+      <section class="cs-research">
+        <h2>The problem, <strong>how do you onboard someone with just slide decks?</strong></h2>
+        <p class="lead">The business development unit didn't have a good system for onboarding new hires, particularly interns and fresh graduates. Having just been in that position, I'd experienced the pain points first hand, so I compiled insights from my own experience and interviews with other interns.</p>
+      </section>
+      <section class="cards-3">
+        <div class="info-card">
+          <h3>Insight 1</h3>
+          <p>A checklist was useful for new hires in understanding what tasks they had to complete.</p>
+        </div>
+        <div class="info-card">
+          <h3>Insight 2</h3>
+          <p>Having resources readily available is valuable, as people like to reference material.</p>
+        </div>
+        <div class="info-card">
+          <h3>Insight 3</h3>
+          <p>People used their government-issued laptops, meaning there was no need for mobile-first.</p>
+        </div>
+      </section>
+      <section class="callout">
+        <p class="callout-label">So the plan was to…</p>
+        <p>Build a new platform on Microsoft PowerApps that brought together the resources and checklist features a new hire would need to access.</p>
+      </section>
+
+      <section class="cs-text">
+        <h2>An overview of the previous experience</h2>
+      </section>
+      <figure class="cs-wide">
+        <img src="assets/ontario/ob-userflow-old.png" alt="Previous linear onboarding user flow">
+        <figcaption>The previous user flow</figcaption>
+      </figure>
+      <section class="annotated annotated--wide">
+        <figure class="feature">
+          <img class="contain" src="assets/ontario/ob-old-app.png" alt="Old PowerApps task screen">
+          <figcaption>The old PowerApps app task screen</figcaption>
+        </figure>
+        <div class="notes">
+          <h3>Why didn't this work?</h3>
+          <ul class="marks marks--bad">
+            <li>Users had a very linear method of navigation.</li>
+            <li>Limited number of options to learn from as a new hire.</li>
+            <li>Not enough features or modularity for managers to find useful.</li>
+            <li>Files were constantly getting lost because they were just sent over Teams chats.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="cs-text">
+        <h2>The refreshed &amp; new experience</h2>
+        <h3>Goals</h3>
+        <ol class="goals">
+          <li>Create an MVP prototype of most features for the onboarding platform, to be developed on PowerApps.</li>
+          <li>Allow for modularity that enabled managers and supervisors to add and remove resources.</li>
+          <li>Create an experience new hires could use throughout their whole internship.</li>
+        </ol>
+        <h3>Process</h3>
+      </section>
+      <section class="cards-3">
+        <div class="info-card">
+          <h3>Plan &amp; understand</h3>
+          <ul><li>Explore and understand previous designs</li><li>Interview managers &amp; team leads about their experiences</li></ul>
+        </div>
+        <div class="info-card">
+          <h3>Design</h3>
+          <ul><li>Build low-fidelity wireframes</li><li>Develop design system</li></ul>
+        </div>
+        <div class="info-card">
+          <h3>Prototype &amp; develop</h3>
+          <ul><li>Build prototypes with full functionality</li><li>Implement designs into PowerApps</li></ul>
+        </div>
+      </section>
+
+      <figure class="cs-wide">
+        <img src="assets/ontario/ob-userflow-new.png" alt="Updated onboarding user flow with checklist, resources, support and feedback branches">
+        <figcaption>The updated user flow</figcaption>
+      </figure>
+      <section class="cs-text">
+        <h3>What changed?</h3>
+        <ul class="marks marks--good">
+          <li>Explorative navigation that lets new hires learn at their own pace.</li>
+          <li>More options and resources to self-learn, reducing workload for managers.</li>
+          <li>Modularity for management to add or change items as needed.</li>
+        </ul>
+      </section>
+
+      <section class="cs-text">
+        <h2>A key feature</h2>
+        <p>Managers across teams loved the idea of adding a "goals 100-day plan", which originated from an Excel worksheet used previously. This meant we needed to add it alongside the task list as a key feature.</p>
+      </section>
+      <figure class="cs-wide">
+        <img src="assets/ontario/ob-100-day-plan.png" alt="Excel 100-day plan worksheet">
+        <figcaption>The previous Excel sheet used to onboard some teams</figcaption>
+      </figure>
+
+      <section class="cs-text">
+        <h2>Exploring the new designs</h2>
+      </section>
+      <section class="showcase-row">
+        <figure class="feature"><img class="contain" src="assets/ontario/ob-home.png" alt="Onboarding home page prototype"></figure>
+        <div class="notes">
+          <h3>Home page</h3>
+          <dl class="key-features">
+            <dt>Welcome message</dt><dd>Welcomed users and gave them their direct manager's email.</dd>
+            <dt>Progress bar and task list</dt><dd>An overview of what needed to be completed that week and how far along they were.</dd>
+            <dt>Goals</dt><dd>A modular goals panel that managers could change depending on what their unit needed.</dd>
+          </dl>
+        </div>
+      </section>
+      <section class="showcase-row">
+        <figure class="feature"><img class="contain" src="assets/ontario/ob-checklist.png" alt="Onboarding checklist prototype"></figure>
+        <div class="notes">
+          <h3>Checklist</h3>
+          <dl class="key-features">
+            <dt>Weekly tabs</dt><dd>Let proactive interns look at what they could expect in the future.</dd>
+            <dt>Coloured check-off headers</dt><dd>Colour helped users see at a glance which tasks needed attention first.</dd>
+          </dl>
+        </div>
+      </section>
+      <section class="showcase-row">
+        <figure class="feature"><img class="contain" src="assets/ontario/ob-resources.png" alt="Onboarding resources prototype in grid view"></figure>
+        <div class="notes">
+          <h3>Resources</h3>
+          <dl class="key-features">
+            <dt>File sorting</dt><dd>New hires were given lots of files, so sorting and search were crucial.</dd>
+            <dt>Favourites</dt><dd>Frequently accessed files could be moved to the top of the sorter.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <section class="cs-text">
+        <h2>The app's impact</h2>
+        <p>Managers were ecstatic to see the high-fidelity prototypes, and we were in the process of implementing a live version on PowerApps. The designs were handed off to the development team to develop further.</p>
+        <a class="cta" href="https://www.figma.com/proto/tzkl0XNfqvcBolKxRRqb5Y/BSSA-New-Hire-Onboarding?page-id=0%3A1&amp;node-id=283%3A634&amp;viewport=865%2C169%2C0.35&amp;scaling=min-zoom&amp;starting-point-node-id=283%3A634" target="_blank" rel="noopener">View the full prototype on Figma <span aria-hidden="true">→</span></a>
+      </section>
+
+      <section class="cs-text">
+        <h2>Takeaways &amp; learnings</h2>
+        <p>We were able to partially develop the onboarding application on PowerApps. We ran out of time to fully build it, but the team is still developing it. Building this product also required a deeper understanding of how hiring managers and mentors traditionally approached onboarding, so we could build on their existing training experiences for new hires.</p>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Tabs: show one project at a time; #esq / #onboarding in the URL picks the tab
+    const tabs = [...document.querySelectorAll('.cs-tabs [role="tab"]')];
+    const select = (id, scroll) => {
+      tabs.forEach(t => {
+        const on = t.getAttribute('aria-controls') === id;
+        t.setAttribute('aria-selected', on);
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (scroll) document.querySelector('.cs-tabs').scrollIntoView({ behavior: 'smooth' });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener('click', () => {
+        const id = t.getAttribute('aria-controls');
+        history.replaceState(null, '', '#' + id);
+        select(id, true);
+      });
+      t.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        next.focus();
+        next.click();
+      });
+    });
+    select(location.hash === '#onboarding' ? 'onboarding' : 'esq', false);
+  </script>
+</body>
+</html>

@@ -52,9 +52,9 @@
         <p>I helped design an AI-powered federal construction contracting platform that handles project procurement, management, and delivery.</p>
       </a>
 
-      <a href="#" class="card">
-        <div class="frame frame--tall">
-          <video src="assets/placeholder.mp4" poster="assets/placeholder-poster.jpg" muted loop playsinline preload="metadata"></video>
+      <a href="ontario.html" class="card">
+        <div class="frame">
+          <img src="assets/ontario/banner.png" alt="Employment Service Questionnaire screens">
         </div>
         <h2>Ministry of Labour - Government of Ontario</h2>
         <p>I designed digital tools for Canadians seeking employment through resources, tools, and skills training.</p>
@@ -70,14 +70,5 @@
     </section>
   </main>
 
-  <script>
-    // Cards without autoplay preview their video on hover
-    document.querySelectorAll('.card').forEach(card => {
-      const video = card.querySelector('video:not([autoplay])');
-      if (!video) return;
-      card.addEventListener('mouseenter', () => video.play().catch(() => {}));
-      card.addEventListener('mouseleave', () => video.pause());
-    });
-  </script>
 </body>
 </html>
