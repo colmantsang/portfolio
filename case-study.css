@@ -216,3 +216,101 @@
 }
 
 body.plain { background-image: none; }
+
+/* Stacked hero (no logo), used by iconnected.html */
+.cs-hero--stacked { display: block; text-align: left; }
+.eyebrow {
+  margin: 0 0 12px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cs-hero .lead { margin: 20px 0 0; font-size: 22px; line-height: 1.35; }
+
+.cs-showcase {
+  max-width: 1040px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+}
+.cs-showcase img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(0, 45, 70, 0.18);
+}
+
+.cs-research .body { margin: 40px 0 0; font-size: 20px; line-height: 1.4; }
+
+/* Plain text sections */
+.cs-text {
+  max-width: 848px;
+  margin: 88px auto 0;
+  padding: 0 24px;
+}
+.cs-text h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--blue);
+}
+.cs-text p { margin: 16px 0 0; font-size: 20px; line-height: 1.4; }
+
+.cta {
+  display: inline-flex;
+  gap: 8px;
+  margin-top: 28px;
+  padding: 14px 22px;
+  background: var(--blue);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 18px;
+  transition: background 0.2s;
+}
+.cta:hover { background: #00375a; }
+
+/* Design system showcase: tall card beside a stack of two */
+.features--ds { max-width: 1040px; align-items: stretch; }
+.feature-stack { display: grid; gap: 24px; }
+.feature--tall { display: flex; flex-direction: column; }
+.features--ds .feature img { aspect-ratio: auto; height: auto; object-fit: contain; border: 0; background: none; }
+.feature--tall img { flex: 1; min-height: 0; object-fit: contain; }
+.features--ds figcaption { margin-top: 16px; }
+.more {
+  grid-column: 1 / -1;
+  margin: 8px 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--blue);
+}
+
+/* Before / after comparisons */
+.compare { margin-top: 48px; }
+.compare h3 {
+  max-width: 1232px;
+  margin: 0 auto;
+  padding: 0 24px;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--ink);
+}
+.compare .features { margin-top: 16px; }
+.compare .feature img { aspect-ratio: 728 / 410; object-fit: cover; object-position: top left; }
+.feature--after { background: var(--card); }
+.feature--after figcaption { color: var(--blue); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .cs-hero .lead { font-size: 19px; }
+  .cs-text { margin-top: 64px; }
+  .cs-text h2 { font-size: 26px; }
+  .cs-text p, .cs-research .body { font-size: 18px; }
+  .features--ds { grid-template-columns: 1fr; }
+}
