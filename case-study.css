@@ -1,0 +1,218 @@
+/* Case study pages (e.g. govgig.html); builds on styles.css */
+
+.cs {
+  --surface: #f4f4f4;
+  --muted: #6b6b6b;
+  padding-bottom: 96px;
+}
+
+.cs-hero,
+.cs-summary,
+.cs-research {
+  max-width: 848px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 24px;
+}
+
+/* Hero */
+.cs-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  align-items: center;
+  gap: 48px;
+  margin-top: 72px;
+}
+
+.cs-logo img { display: block; width: 100%; max-width: 270px; }
+
+.cs-hero h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.2;
+  color: var(--blue);
+}
+
+/* Quick summary */
+.cs-summary { margin-top: 56px; }
+
+.cs-summary > * {
+  background: var(--surface);
+}
+
+.cs-summary-head {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 24px 8px;
+  border-radius: 16px 16px 0 0;
+  font-size: 20px;
+}
+
+.cs-summary dl {
+  display: grid;
+  grid-template-columns: 270px 1fr;
+  gap: 20px 0;
+  margin: 0;
+  padding: 8px 24px 24px;
+  border-radius: 0 0 16px 16px;
+}
+
+.cs-summary dt {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--blue);
+}
+
+.cs-summary dd {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.muted { color: var(--muted); }
+
+/* Auto-scrolling screen ticker */
+.ticker {
+  margin: 64px 24px 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+}
+
+.ticker-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: ticker 40s linear infinite;
+}
+
+.ticker:hover .ticker-track { animation-play-state: paused; }
+
+@keyframes ticker {
+  to { transform: translateX(calc(-50% - 8px)); }
+}
+
+.shot {
+  flex: none;
+  width: 520px;
+  height: 380px;
+  margin: 0;
+  padding: 16px;
+  background: var(--surface);
+  border-radius: 16px;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  border-radius: 6px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker { overflow-x: auto; }
+  .ticker-track { animation: none; }
+}
+
+/* Research */
+.cs-research { margin-top: 72px; }
+
+.cs-research h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.2;
+  color: var(--blue);
+}
+
+.cs-research h2 strong { font-weight: 700; }
+
+.cs-research .lead {
+  margin: 24px 0 0;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.cs-research ol {
+  margin: 40px 0 0;
+  padding-left: 30px;
+  display: grid;
+  gap: 28px;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+/* Feature cards */
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1232px;
+  margin: 56px auto 0;
+  padding: 0 24px;
+}
+
+.feature {
+  margin: 0;
+  padding: 32px;
+  background: var(--surface);
+  border-radius: 24px;
+}
+
+.feature img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 510 / 410;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid #c9d6d0;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.feature figcaption {
+  margin-top: 24px;
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--muted);
+}
+
+/* Placeholder for images not yet exported from Framer */
+.missing { position: relative; }
+.missing img { visibility: hidden; }
+.cs-logo.missing { min-height: 80px; }
+.missing::after {
+  content: "Image needed: " attr(data-file);
+  position: absolute;
+  inset: 16px;
+  display: grid;
+  place-items: center;
+  padding: 12px;
+  border: 2px dashed #b9c4cc;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--muted);
+}
+.feature.missing::after { inset: 32px 32px auto; aspect-ratio: 510 / 410; }
+.cs-logo.missing::after { inset: 0; }
+
+@media (max-width: 760px) {
+  .cs-hero { grid-template-columns: 1fr; gap: 24px; margin-top: 48px; }
+  .cs-hero h1, .cs-research h2 { font-size: 30px; }
+  .cs-summary dl { grid-template-columns: 1fr; gap: 4px; }
+  .cs-summary dd { margin-bottom: 16px; }
+  .shot { width: 300px; height: 230px; padding: 10px; }
+  .cs-research .lead { font-size: 20px; }
+  .cs-research ol { font-size: 19px; }
+  .features { grid-template-columns: 1fr; }
+  .feature { padding: 20px; }
+  .feature.missing::after { inset: 20px 20px auto; }
+}
+
+body.plain { background-image: none; }
