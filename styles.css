@@ -74,10 +74,10 @@ a { color: inherit; text-decoration: none; }
 .hero h1 {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
-  font-weight: 400;
+  font-weight: 700;
   font-size: 40px;
   line-height: 1.2;
-  color: var(--blue);
+  color: #000;
 }
 
 .hero p {
