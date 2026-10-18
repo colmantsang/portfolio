@@ -8,8 +8,9 @@
   <link rel="icon" href="assets/avatar.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=Inter:wght@500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="about.css">
 </head>
 <body>
   <header class="nav-wrap">
@@ -18,7 +19,7 @@
         <img src="assets/avatar.png" alt="Colman" width="64" height="64">
       </a>
       <div class="nav-links">
-        <a href="#about">About</a>
+        <a href="#about" data-about>About</a>
         <a href="#projects">Projects</a>
         <a href="mailto:kolmantsang@gmail.com" class="icon" aria-label="Email">
           <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -36,7 +37,7 @@
   </header>
 
   <main>
-    <section id="about" class="hero">
+    <section id="intro" class="hero">
       <h1>Hey, I’m Colman!</h1>
       <p>Senior Product Designer, experienced in building data-heavy tools for subject matter experts</p>
     </section>
@@ -68,5 +69,6 @@
     </section>
   </main>
 
+  <script src="about.js"></script>
 </body>
 </html>

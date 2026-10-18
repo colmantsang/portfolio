@@ -1,0 +1,131 @@
+/* About modal (about.js); uses the site tokens from styles.css */
+
+html.about-open { overflow: hidden; }
+
+.about {
+  --muted: #6b6b6b;
+  width: min(686px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ink);
+  font-family: Figtree, sans-serif;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.about::backdrop { background: rgba(0, 0, 0, 0.4); }
+
+.about[open] { animation: about-in 0.22s ease-out; }
+.about[open]::backdrop { animation: about-fade 0.22s ease-out; }
+@keyframes about-in { from { opacity: 0; transform: translateY(12px) scale(0.98); } }
+@keyframes about-fade { from { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .about[open], .about[open]::backdrop { animation: none; }
+}
+
+.about-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 32px 0;
+}
+.about-head h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+.about-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-right: -6px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.about-close:hover { background: #f1f1f1; }
+.about-close:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.about-body {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  padding: 12px 32px 0;
+}
+
+.about-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.about-side h3 {
+  margin: 16px 0 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.about-contact {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 5px 12px;
+  margin: 16px 0 0;
+  font-size: 16px;
+  line-height: 24px;
+}
+.about-contact dt { color: var(--ink); }
+.about-contact dd { margin: 0; text-align: right; color: var(--muted); }
+.about-contact a { transition: color 0.2s; }
+.about-contact a:hover { color: var(--blue); }
+.about .underline { text-decoration: underline; text-underline-offset: 3px; }
+.about .accent { color: var(--blue); font-weight: 600; }
+.about .accent:hover { text-decoration: underline; }
+
+.about-bio p {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 24px;
+}
+.about-bio p:last-child { margin-bottom: 0; }
+.about-bio strong { font-weight: 700; }
+.about-bio a:hover { color: var(--blue); }
+
+/* Overlapping photo strip, clipped by the bottom of the panel (positions from the Figma frame, 622 x 224) */
+.about-collage {
+  position: relative;
+  aspect-ratio: 622 / 224;
+  margin: 36px 32px 0;
+}
+.about-collage img {
+  position: absolute;
+  width: 27.01%;
+  object-fit: cover;
+  border-radius: 4.5px 4.5px 0 0;
+}
+.c-forest  { left: 72.99%; top: 6.25%;  height: 93.75%; z-index: 1; }
+.c-tennis  { left: 0;      top: 6.25%;  height: 93.75%; z-index: 2; }
+.c-snow    { left: 50%;    top: 18.75%; height: 81.25%; z-index: 3; }
+.c-fishing { left: 11.9%;  top: 31.7%;  height: 68.3%;  z-index: 4; }
+.c-zipline { left: 30.55%; top: 0;      height: 100%;   z-index: 5; }
+
+@media (max-width: 640px) {
+  .about-head { padding: 20px 20px 0; }
+  .about-body { grid-template-columns: 1fr; gap: 20px; padding: 12px 20px 0; }
+  .about-collage { margin: 28px 20px 0; }
+}
