@@ -52,6 +52,14 @@
   };
   const close = () => dialog.close();
 
+  // Show the scrollbar only while scrolling, fading out shortly after it stops
+  let scrollTimer;
+  dialog.addEventListener('scroll', () => {
+    dialog.classList.add('is-scrolling');
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => dialog.classList.remove('is-scrolling'), 800);
+  }, { passive: true });
+
   dialog.addEventListener('close', () => {
     document.documentElement.classList.remove('about-open');
     if (location.hash === '#about') history.replaceState(null, '', location.pathname + location.search);
