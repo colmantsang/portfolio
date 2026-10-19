@@ -130,10 +130,10 @@
 }
 
 .cs-research ol {
-  margin: 40px 0 0;
+  margin: 24px 0 0;
   padding-left: 30px;
   display: grid;
-  gap: 28px;
+  gap: 12px;
   font-size: 22px;
   font-weight: 300;
   line-height: 1.3;
