@@ -6,41 +6,20 @@
 
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // ---------- tiny icon set (24px grid, stroke) ----------
-  const ICONS = {
-    back: 'M19 12H5m6-6-6 6 6 6',
-    arrow: 'M5 12h14m-6-6 6 6-6 6',
-    chevL: 'M15 6l-6 6 6 6',
-    chevR: 'M9 6l6 6-6 6',
-    chevD: 'M6 9l6 6 6-6',
-    chevU: 'M6 15l6-6 6 6',
-    collapse: 'M17 6l-6 6 6 6M7 5v14',
-    swap: 'M7 8h12l-3-3M17 16H5l3 3',
-    exit: 'M19 12H7m4-5-5 5 5 5',
-    gear: 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.4-3a7.4 7.4 0 0 0-.1-1.3l2-1.5-2-3.4-2.3.9a7.6 7.6 0 0 0-2.2-1.3L14.5 3h-5l-.3 2.4a7.6 7.6 0 0 0-2.2 1.3l-2.3-.9-2 3.4 2 1.5a7.4 7.4 0 0 0 0 2.6l-2 1.5 2 3.4 2.3-.9a7.6 7.6 0 0 0 2.2 1.3l.3 2.4h5l.3-2.4a7.6 7.6 0 0 0 2.2-1.3l2.3.9 2-3.4-2-1.5c.1-.4.1-.9.1-1.3z',
-    grid: 'M4 4h7v7H4zM13 4h7v4h-7zM13 10h7v10h-7zM4 13h7v7H4z',
-    list: 'M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01',
-    board: 'M4 4h16v16H4zM9.5 4v16M14.5 4v16',
-    cal: 'M4 6h16v14H4zM4 10h16M8 3v4M16 3v4',
-    plus: 'M12 5v14M5 12h14',
-    sign: 'M5 20h14M7 16l9-9 2 2-9 9H7z',
-    chat: 'M4 5h16v11H8l-4 4z',
-    bell: 'M6 16V11a6 6 0 1 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0',
-    spark: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z',
-    dash: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z',
-    info: 'M6 3h9l3 3v15H6zM9 9h6M9 13h6M9 17h4',
-    stories: 'M7 4v16M17 4v16M7 8h10M7 16h10',
-    users: 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM2 21a7 7 0 0 1 14 0M17 11a3 3 0 1 0 0-6M22 21a6 6 0 0 0-4-5.6',
-    docs: 'M4 6h16M4 12h10M4 18h7M17 14l3 3-3 3',
-    table: 'M4 5h16v14H4zM4 10h16M10 10v9',
-    sched: 'M4 5h16v14H4zM4 9h16',
-    edit: 'M5 19h14M7 15l8-8 2 2-8 8H7z',
-    book: 'M4 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H4zM20 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z',
-    lib: 'M5 4h14v16H5zM9 8h6M9 12h6',
-    check: 'M5 12l5 5 9-10',
+  // ---------- icons: exact vectors from the Figma frame (submittal-demo-icons.js) ----------
+  const FIGMA = window.SD_ICONS || {};
+  const ALIAS = {
+    back: 'back', arrow: 'arrowR', chevD: 'chevDown', chevU: 'chevUp', collapse: 'collapse', swap: 'swap',
+    exit: 'exit', gear: 'gear', grid: 'summary', list: 'list', board: 'board', cal: 'calendar', plus: 'plus',
+    sign: 'signatures', chat: 'chat', bell: 'bell', spark: 'spark', ask: 'ask', dash: 'dashboard',
+    info: 'projectInfo', stories: 'stories', users: 'contacts', docs: 'sourceDocs', table: 'register',
+    sched: 'schedule', edit: 'createDoc', book: 'library', lib: 'library2', logo: 'logo',
   };
-  const icon = (name, size = 16, w = 1.8) =>
-    `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${ICONS[name]}"/></svg>`;
+  const icon = (name, cls = '') => {
+    if (name === 'check') return `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>`;
+    const f = FIGMA[ALIAS[name]];
+    return f ? `<svg class="ico ${cls}" viewBox="${f.vb}" fill="none" aria-hidden="true">${f.svg}</svg>` : '';
+  };
 
   // ---------- sample data ----------
   const KPIS = [
@@ -96,41 +75,45 @@
   const NAV = [
     [null, [['dash', 'Dashboard'], ['info', 'Project Info'], ['stories', 'Stories'], ['users', 'Contact list']]],
     ['Configuration', [['docs', 'Source Docs'], ['table', 'Submittal Register', true], ['sched', 'Schedule']]],
-    ['Documentation', [['edit', 'Create Document'], ['book', 'Library'], ['lib', 'Templates']]],
+    ['Documentation', [['edit', 'Create Document'], ['book', 'Library'], ['lib', 'Reports']]],
   ];
 
   root.innerHTML = `
   <div class="sd" role="region" aria-label="Interactive GovGig Submittal Register demo">
     <aside class="sd-side">
       <div class="sd-brand">
-        <img src="assets/govgig/demo/logo.png" alt="GovGig">
-        <button type="button" class="sd-icon-btn sd-collapse" aria-label="Collapse sidebar" aria-expanded="true">${icon('collapse', 18)}</button>
+        <svg class="sd-logo" viewBox="${FIGMA.logo ? FIGMA.logo.vb : '0 0 162 48'}" role="img" aria-label="GovGig">${FIGMA.logo ? FIGMA.logo.svg : ''}</svg>
+        <button type="button" class="sd-icon-btn sd-collapse" aria-label="Collapse sidebar" aria-expanded="true">${icon('collapse')}</button>
       </div>
       <div class="sd-project">
+        <div class="sd-banner" aria-hidden="true"></div>
         <div class="sd-project-card">
           <div style="min-width:0"><strong>Kitsap Naval Base Repair</strong><span class="sd-status">Post-Award</span></div>
-          <span class="t-navy" style="color:#4a7bd0">${icon('swap', 16)}</span>
+          <span class="sd-swap">${icon('swap')}</span>
         </div>
         <div class="sd-project-actions">
-          <button type="button" class="sd-btn" data-toast="Leaving project… (demo)">${icon('exit', 14)}Exit project</button>
-          <button type="button" class="sd-btn" data-toast="Project settings (demo)">${icon('gear', 14, 1.5)}Settings</button>
+          <button type="button" class="sd-btn" data-toast="Leaving project… (demo)">${icon('exit')}Exit project</button>
+          <button type="button" class="sd-btn" data-toast="Project settings (demo)">${icon('gear')}Settings</button>
         </div>
       </div>
+      <div class="sd-rule"></div>
       <nav class="sd-nav" aria-label="Project">
-        ${NAV.map(([head, items]) => `
-          ${head ? `<h4><span class="sd-label">${head}</span>${icon('chevU', 14)}</h4>` : ''}
-          ${items.map(([ic, label, active]) => `<a href="#" class="${active ? 'is-active' : ''}" title="${label}">${icon(ic, 16, 1.6)}<span class="sd-label">${label}</span></a>`).join('')}`).join('')}
+        ${NAV.map(([head, items], g) => `
+          ${head ? `<h4><span class="sd-label">${head}</span><button type="button" aria-expanded="true" aria-controls="sd-group-${g}" aria-label="Toggle ${head}">${icon('chevU')}</button></h4>` : ''}
+          <div class="sd-nav-group" id="sd-group-${g}">
+          ${items.map(([ic, label, active]) => `<a href="#" class="${active ? 'is-active' : ''}" title="${label}">${icon(ic)}<span class="sd-label">${label}</span></a>`).join('')}
+          </div>`).join('')}
       </nav>
-      <div class="sd-user"><span class="sd-avatar">M</span><div>Marcus Webb<small>Advanced Technology Construction</small></div></div>
+      <div class="sd-user"><span class="sd-avatar">M</span><div><b>Marcus Webb</b><small>Advanced Technology Construction</small></div></div>
     </aside>
 
     <div class="sd-main">
       <header class="sd-top">
-        <button type="button" class="sd-back" data-toast="Back to projects (demo)">${icon('back', 16)}Back</button>
+        <button type="button" class="sd-back" data-toast="Back to projects (demo)">${icon('back')}Back</button>
         <span class="sd-title">Kitsap Naval Base Repair</span>
         <div class="sd-top-actions">
           <div class="sd-menu-wrap sd-hide-sm">
-            <button type="button" class="sd-btn sd-sign" aria-haspopup="true" aria-expanded="false">${icon('sign', 15)}Signatures <span class="sd-count">3</span>${icon('chevD', 14)}</button>
+            <button type="button" class="sd-btn sd-sign" aria-haspopup="true" aria-expanded="false">${icon('sign')}Signatures <span class="sd-count">3</span>${icon('chevD', 'chev')}</button>
             <div class="sd-menu" role="menu">
               <p>Waiting on you</p>
               <button type="button" role="menuitem" data-sign>SR-003 Fire suppression <small>Due today</small></button>
@@ -138,9 +121,9 @@
               <button type="button" role="menuitem" data-sign>SR-016 Generator <small>May 24</small></button>
             </div>
           </div>
-          <button type="button" class="sd-btn sd-ask" data-toast="Ask GovGig: “What’s blocking SR-008?”">${icon('spark', 15)}Ask GovGig</button>
-          <button type="button" class="sd-icon-btn sd-hide-sm" aria-label="Messages" data-toast="No new messages">${icon('chat', 18)}</button>
-          <button type="button" class="sd-icon-btn sd-dot" aria-label="Notifications" data-toast="2 submittals returned by NAVFAC">${icon('bell', 18)}</button>
+          <button type="button" class="sd-btn sd-ask" data-toast="Ask GovGig: “What’s blocking SR-008?”">${icon('ask')}Ask GovGig</button>
+          <button type="button" class="sd-icon-btn sd-hide-sm" aria-label="Messages" data-toast="No new messages">${icon('chat')}</button>
+          <button type="button" class="sd-icon-btn" aria-label="Notifications" data-toast="2 submittals returned by NAVFAC">${icon('bell')}</button>
         </div>
       </header>
 
@@ -148,28 +131,28 @@
         <div class="sd-toolbar">
           <div class="sd-tabs" role="tablist" aria-label="View">
             <span class="sd-tab-pill" aria-hidden="true"></span>
-            <button type="button" role="tab" aria-selected="true" data-view="summary">${icon('grid', 15)}<span class="sd-label">Summary</span></button>
-            <button type="button" role="tab" aria-selected="false" data-view="list">${icon('list', 15)}<span class="sd-label">List</span></button>
-            <button type="button" role="tab" aria-selected="false" data-view="board">${icon('board', 15)}<span class="sd-label">Board</span></button>
-            <button type="button" role="tab" aria-selected="false" data-view="calendar">${icon('cal', 15)}<span class="sd-label">Calendar</span></button>
+            <button type="button" role="tab" aria-selected="true" data-view="summary">${icon('grid')}<span class="sd-label">Summary</span></button>
+            <button type="button" role="tab" aria-selected="false" data-view="list">${icon('list')}<span class="sd-label">List</span></button>
+            <button type="button" role="tab" aria-selected="false" data-view="board">${icon('board')}<span class="sd-label">Board</span></button>
+            <button type="button" role="tab" aria-selected="false" data-view="calendar">${icon('cal')}<span class="sd-label">Calendar</span></button>
           </div>
-          <button type="button" class="sd-btn sd-btn--primary" data-toast="New submittal item (demo)">${icon('plus', 15)}<span class="sd-label">Add item</span></button>
+          <button type="button" class="sd-btn sd-btn--primary sd-add" data-toast="New submittal item (demo)">${icon('plus')}<span class="sd-label">Add item</span></button>
         </div>
 
         <section class="sd-view" data-view-panel="summary">
           <div class="sd-welcome">
-            <span class="sd-spark">${icon('spark', 13)}</span>
+            <span class="sd-spark">${icon('spark')}</span>
             <div>
               <strong>Welcome back to your submittal</strong>
               <p>Approve critical submittals by July 12th and upload updated project documents to keep the NAVFAC project on track!</p>
               <div class="sd-actions">
-                <button type="button" class="sd-btn" data-toast="Opening SR-003…">Review Submittal Item SR-003 <span class="arrow">${icon('arrow', 15)}</span></button>
-                <button type="button" class="sd-btn" data-toast="Schedule updated">Update Schedule <span class="arrow">${icon('arrow', 15)}</span></button>
+                <button type="button" class="sd-btn" data-toast="Opening SR-003…">Review Submittal Item SR-003 <span class="arrow">${icon('arrow')}</span></button>
+                <button type="button" class="sd-btn" data-toast="Schedule updated">Update Schedule <span class="arrow">${icon('arrow')}</span></button>
               </div>
             </div>
           </div>
 
-          <div class="sd-card" style="margin-top:14px">
+          <div class="sd-card sd-kpi-card">
             <h3>This Month’s Key Performance Indicators</h3>
             <div class="sd-kpis">
               ${KPIS.map(k => `<div class="sd-kpi"><b data-count="${k.n}">${k.n}</b><span>${k.label}</span><em class="t-${k.tone}">${k.note}</em></div>`).join('')}
@@ -248,15 +231,15 @@
             </div>
           </div>
 
-          <div class="sd-card" style="margin-top:14px">
+          <div class="sd-card sd-chart-card">
             <div class="sd-chart-head"><h3>Approval Deadlines - Monthly</h3><p class="sd-sub">Items = submittals needing internal decision that week</p></div>
             <hr>
             <div class="sd-bars"></div>
             <div class="sd-weeks"></div>
             <div class="sd-month">
-              <button type="button" class="sd-btn" data-month="-1" aria-label="Previous month">${icon('back', 15)}</button>
+              <button type="button" class="sd-btn" data-month="-1" aria-label="Previous month">${icon('back')}</button>
               <span aria-live="polite"></span>
-              <button type="button" class="sd-btn" data-month="1" aria-label="Next month">${icon('arrow', 15)}</button>
+              <button type="button" class="sd-btn" data-month="1" aria-label="Next month">${icon('arrow')}</button>
             </div>
           </div>
         </section>
@@ -270,13 +253,13 @@
           </div>
         </section>
         <section class="sd-view" data-view-panel="board" hidden>
-          <div class="sd-empty">${icon('board', 28, 1.4)}<strong>Board view</strong>Drag submittals between stages — not part of this demo.</div>
+          <div class="sd-empty">${icon('board')}<strong>Board view</strong>Drag submittals between stages — not part of this demo.</div>
         </section>
         <section class="sd-view" data-view-panel="calendar" hidden>
-          <div class="sd-empty">${icon('cal', 28, 1.4)}<strong>Calendar view</strong>Due dates on a timeline — not part of this demo.</div>
+          <div class="sd-empty">${icon('cal')}<strong>Calendar view</strong>Due dates on a timeline — not part of this demo.</div>
         </section>
       </div>
-      <div class="sd-toast" role="status" aria-live="polite">${icon('check', 15, 2.2)}<span></span></div>
+      <div class="sd-toast" role="status" aria-live="polite">${icon('check')}<span></span></div>
     </div>
   </div>`;
 
@@ -309,6 +292,28 @@
     requestAnimationFrame(movePill);
   });
 
+  // ---------- collapsible nav sections ----------
+  $$('.sd-nav h4 button').forEach(btn => {
+    const group = root.querySelector('#' + btn.getAttribute('aria-controls'));
+    group.style.maxHeight = `${group.scrollHeight}px`;
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') !== 'true';
+      btn.setAttribute('aria-expanded', String(open));
+      btn.parentElement.classList.toggle('is-closed', !open);
+      group.style.maxHeight = open ? `${group.scrollHeight}px` : '0px';
+    });
+  });
+
+  // ---------- fit the 1440px design into the box; stack it on narrow screens ----------
+  const fit = () => {
+    const w = root.clientWidth;
+    const compact = w < 760;
+    app.classList.toggle('is-compact', compact);
+    app.style.zoom = compact ? '' : String(Math.min(1, w / 1440));
+    movePill();
+  };
+  new ResizeObserver(fit).observe(root);
+
   // ---------- signatures menu ----------
   const signBtn = $('.sd-sign');
   const menu = $('.sd-menu');
@@ -331,6 +336,7 @@
   const tabs = $$('.sd-tabs [role="tab"]');
   const pill = $('.sd-tab-pill');
   function movePill() {
+    if (!pill) return;
     const active = tabs.find(t => t.getAttribute('aria-selected') === 'true');
     pill.style.width = `${active.offsetWidth}px`;
     pill.style.transform = `translateX(${active.offsetLeft}px)`;
