@@ -234,13 +234,13 @@
         </section>
 
         <section class="sd-view" data-view-panel="list" hidden>
-          <div class="sd-empty">${icon('list')}<strong>List view</strong>Every submittal in one sortable table — not part of this demo.</div>
+          <div class="sd-empty">${icon('list')}<strong>List view</strong>not part of this demo.</div>
         </section>
         <section class="sd-view" data-view-panel="board" hidden>
-          <div class="sd-empty">${icon('board')}<strong>Board view</strong>Drag submittals between stages — not part of this demo.</div>
+          <div class="sd-empty">${icon('board')}<strong>Board view</strong>not part of this demo.</div>
         </section>
         <section class="sd-view" data-view-panel="calendar" hidden>
-          <div class="sd-empty">${icon('cal')}<strong>Calendar view</strong>Due dates on a timeline — not part of this demo.</div>
+          <div class="sd-empty">${icon('cal')}<strong>Calendar view</strong>not part of this demo.</div>
         </section>
       </div>
       <div class="sd-toast" role="status" aria-live="polite">${icon('check')}<span></span></div>
