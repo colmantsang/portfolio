@@ -16,15 +16,7 @@
 }
 
 /* Hero */
-.cs-hero {
-  display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  align-items: center;
-  gap: 48px;
-  margin-top: 72px;
-}
-
-.cs-logo img { display: block; width: 100%; max-width: 270px; }
+.cs-hero { margin-top: 72px; }
 
 .cs-hero h1 {
   margin: 0;
@@ -75,7 +67,7 @@
 
 /* Auto-scrolling screen ticker */
 .ticker {
-  margin: 64px 24px 0;
+  margin: 48px 24px 0;
   overflow: hidden;
   mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
 }
@@ -182,28 +174,8 @@
   color: var(--muted);
 }
 
-/* Placeholder for images not yet exported from Framer */
-.missing { position: relative; }
-.missing img { visibility: hidden; }
-.cs-logo.missing { min-height: 80px; }
-.missing::after {
-  content: "Image needed: " attr(data-file);
-  position: absolute;
-  inset: 16px;
-  display: grid;
-  place-items: center;
-  padding: 12px;
-  border: 2px dashed #b9c4cc;
-  border-radius: 8px;
-  font-size: 14px;
-  text-align: center;
-  color: var(--muted);
-}
-.feature.missing::after { inset: 32px 32px auto; aspect-ratio: 510 / 410; }
-.cs-logo.missing::after { inset: 0; }
-
 @media (max-width: 760px) {
-  .cs-hero { grid-template-columns: 1fr; gap: 24px; margin-top: 48px; }
+  .cs-hero { margin-top: 48px; }
   .cs-hero h1, .cs-research h2 { font-size: 30px; }
   .cs-summary dl { grid-template-columns: 1fr; gap: 4px; }
   .cs-summary dd { margin-bottom: 16px; }
@@ -212,13 +184,11 @@
   .cs-research ol { font-size: 19px; }
   .features { grid-template-columns: 1fr; }
   .feature { padding: 20px; }
-  .feature.missing::after { inset: 20px 20px auto; }
 }
 
 body.plain { background-image: none; }
 
-/* Stacked hero (no logo), used by iconnected.html */
-.cs-hero--stacked { display: block; text-align: left; }
+/* Hero extras: eyebrow line and lead paragraph */
 .eyebrow {
   margin: 0 0 12px;
   font-family: "Space Grotesk", sans-serif;

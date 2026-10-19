@@ -39,11 +39,22 @@
 
   <main class="cs">
     <section class="cs-hero">
-      <div class="cs-logo">
-        <!-- Export the GovGig logo from Framer to assets/govgig/logo.png -->
-        <img src="assets/govgig/logo.png" alt="GovGig">
-      </div>
+      <p class="eyebrow">Mobcoder x GovGig · Lead Product Designer</p>
       <h1>A digital war chest for contractors with high demand workloads</h1>
+    </section>
+
+    <section class="ticker" aria-label="GovGig screens">
+      <div class="ticker-track">
+        <!-- The set is listed twice so the loop is seamless; the copy is hidden from screen readers -->
+        <figure class="shot"><img src="assets/govgig/screen-profile.png" alt="Business profile screen"></figure>
+        <figure class="shot"><img src="assets/govgig/screen-aha.png" alt="AHA submittal document editor"></figure>
+        <figure class="shot"><img src="assets/govgig/screen-playbook.png" alt="Specification validation playbook agent"></figure>
+        <figure class="shot"><img src="assets/govgig/screen-dashboard.png" alt="Kitsap Naval Base Repair project dashboard"></figure>
+        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-profile.png" alt=""></figure>
+        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-aha.png" alt=""></figure>
+        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-playbook.png" alt=""></figure>
+        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-dashboard.png" alt=""></figure>
+      </div>
     </section>
 
     <section class="cs-summary" aria-label="Quick summary">
@@ -61,20 +72,6 @@
         <dt>Results</dt>
         <dd>An end-to-end construction management platform currently in it's seed stage, gaining users month over month.</dd>
       </dl>
-    </section>
-
-    <section class="ticker" aria-label="GovGig screens">
-      <div class="ticker-track">
-        <!-- The set is listed twice so the loop is seamless; the copy is hidden from screen readers -->
-        <figure class="shot"><img src="assets/govgig/screen-profile.png" alt="Business profile screen"></figure>
-        <figure class="shot"><img src="assets/govgig/screen-aha.png" alt="AHA submittal document editor"></figure>
-        <figure class="shot"><img src="assets/govgig/screen-playbook.png" alt="Specification validation playbook agent"></figure>
-        <figure class="shot"><img src="assets/govgig/screen-dashboard.png" alt="Kitsap Naval Base Repair project dashboard"></figure>
-        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-profile.png" alt=""></figure>
-        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-aha.png" alt=""></figure>
-        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-playbook.png" alt=""></figure>
-        <figure class="shot" aria-hidden="true"><img src="assets/govgig/screen-dashboard.png" alt=""></figure>
-      </div>
     </section>
 
     <section class="cs-research">
@@ -107,17 +104,6 @@
     </section>
   </main>
 
-  <script>
-    // Mark images that haven't been exported yet so they show as labelled placeholders
-    document.querySelectorAll('.cs img').forEach(img => {
-      const mark = () => {
-        img.parentElement.classList.add('missing');
-        img.parentElement.dataset.file = img.getAttribute('src');
-      };
-      if (img.complete && !img.naturalWidth) mark();
-      img.addEventListener('error', mark);
-    });
-  </script>
   <script src="about.js"></script>
 </body>
 </html>
