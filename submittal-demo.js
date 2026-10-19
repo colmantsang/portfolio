@@ -14,6 +14,7 @@
     sign: 'signatures', chat: 'chat', bell: 'bell', spark: 'spark', ask: 'ask', dash: 'dashboard',
     info: 'projectInfo', stories: 'stories', users: 'contacts', docs: 'sourceDocs', table: 'register',
     sched: 'schedule', edit: 'createDoc', book: 'library', lib: 'library2', logo: 'logo',
+    search: 'search', filter: 'filter', sort: 'sort', play: 'play', stop: 'stop', retry: 'retry', rowChev: 'rowChev',
   };
   const icon = (name, cls = '') => {
     if (name === 'check') return `<svg class="ico ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>`;
@@ -234,7 +235,7 @@
         </section>
 
         <section class="sd-view" data-view-panel="list" hidden>
-          <div class="sd-empty">${icon('list')}<strong>List view</strong>not part of this demo.</div>
+          <div class="sl" data-list></div>
         </section>
         <section class="sd-view" data-view-panel="board" hidden>
           <div class="sd-empty">${icon('board')}<strong>Board view</strong>not part of this demo.</div>
@@ -395,6 +396,207 @@
     bars.classList.remove('is-shown');
     setTimeout(() => { renderMonth(); requestAnimationFrame(() => bars.classList.add('is-shown')); }, reduceMotion ? 0 : 180);
   }));
+
+
+  // ---------- List view (Figma: "Submittal Register - Filled") ----------
+  const SUBMITTALS = [
+    { id: 1020, gov: 'A', tr: '001', sd: 'SD-03', spec: '03 30 00', para: '3.6.1', ai: 'idle', docs: 2, item: 'Composite Samples (11.5.1.12) - Soil and aggregate testing for foundation stability', ga: 'G', submit: '10/01/2026', approve: '10/01/2026', who: ['JD', 'John Doe'], status: 'Published', due: '06/07/2026' },
+    { id: 1021, gov: 'F', tr: '034', sd: 'SD-15', spec: '01 10 30', para: '2.5.0', ai: 'running', docs: 4, done: 3, item: 'Composite Samples (11.5.1.32) - Concrete mix verification for structural integrity', ga: '-', submit: '10/01/2026', approve: '10/01/2026', who: null, status: 'Draft', due: '04/16/2027' },
+    { id: 1022, gov: 'A', tr: '035', sd: 'SD-08', spec: '80 03 13', para: '2.7.0', ai: 'passed', docs: 2, item: 'Composite Samples (11.5.1.11) - Asphalt blend analysis for pavement durability', ga: 'G', submit: '11/15/2026', approve: '11/15/2026', who: null, status: 'Draft', due: '11/18/2026' },
+    { id: 1023, gov: 'B', tr: '036', sd: 'SD-09', spec: '81 04 14', para: '2.8.1', ai: 'failed', docs: 1, item: 'Paint and coating consistency check for corrosion resistance', ga: 'G', submit: '12/01/2026', approve: '12/01/2026', who: ['MS', 'Mary Smith'], status: 'Assigned', due: '12/05/2026' },
+    { id: 1024, gov: 'C', tr: '037', sd: 'SD-10', spec: '82 05 15', para: '3.0.0', ai: 'idle', docs: 3, item: 'Insulation material quality assessment for thermal efficiency', ga: 'A/E', submit: '01/10/2027', approve: '01/10/2027', who: ['RL', 'Robert Lee'], status: 'Ready to publish', due: '01/15/2027' },
+    { id: 1025, gov: 'D', tr: '038', sd: 'SD-11', spec: '83 06 16', para: '3.1.2', ai: 'idle', docs: 2, item: 'Steel reinforcement tensile strength evaluation', ga: '-', submit: '02/20/2027', approve: '02/20/2027', who: null, status: 'Draft', due: '02/25/2027' },
+    { id: 1026, gov: 'E', tr: '039', sd: 'SD-12', spec: '84 07 17', para: '3.2.5', ai: 'idle', docs: 3, item: 'Waterproofing membrane adhesion testing', ga: '-', submit: '03/30/2027', approve: '03/30/2027', who: ['BW', 'Brian White'], status: 'Assigned', due: '04/04/2027' },
+    { id: 1027, gov: 'F', tr: '040', sd: 'SD-13', spec: '85 08 18', para: '3.3.7', ai: 'idle', docs: 2, item: 'Electrical conduit material compliance verification', ga: '-', submit: '05/15/2027', approve: '05/15/2027', who: ['CL', 'Catherine Lee'], status: 'In review', due: '05/20/2027' },
+    { id: 1028, gov: 'G', tr: '041', sd: 'SD-14', spec: '86 09 19', para: '3.4.9', ai: 'idle', docs: 4, item: 'HVAC ductwork insulation performance review', ga: '-', submit: '06/25/2027', approve: '06/25/2027', who: ['DS', 'David Smith'], status: 'Published', due: '06/30/2027' },
+  ];
+  const COLS = [
+    ['id', 'Activity #'], ['gov', 'Gov-Action-Code'], ['tr', 'Transmittal #'], ['sd', 'SD #'], ['spec', 'Spec Section'],
+    ['para', 'Paragraph #'], ['ai', 'AI Review Status'], ['desc', 'Description', false], ['item', 'Item'], ['ga', 'G or A/E'],
+    ['submit', 'Submit Date'], ['approve', 'Approve Date'], ['who', 'Assigned'], ['status', 'Internal Status'],
+  ];
+  const STATUS_TONE = { Published: 'g', Draft: 'n', Assigned: 'b', 'Ready to publish': 'a', 'In review': 'a' };
+  const AI_RANK = { running: 0, failed: 1, idle: 2, passed: 3 };
+  const toDate = v => { const [m, d, y] = v.split('/'); return `${y}${m}${d}`; };
+  const sortValue = (r, key) => key === 'ai' ? AI_RANK[r.ai] : key === 'who' ? (r.who ? r.who[1] : '~') :
+    key === 'submit' || key === 'approve' ? toDate(r[key]) : String(r[key]);
+
+  const listRoot = $('[data-list]');
+  const listState = { q: '', sort: null, dir: 1, open: new Set(), selected: new Set(), statuses: new Set() };
+  const timers = new Map();
+
+  listRoot.innerHTML = `
+    <div class="sl-stats">
+      <div class="sl-stat"><span>With Gov</span><b>14</b></div>
+      <div class="sl-stat"><span>Overdue</span><b>3 <em class="sl-urgent">Urgent</em></b></div>
+      <div class="sl-stat"><span>Critical Item</span><b>22</b></div>
+    </div>
+    <div class="sl-tools">
+      <label class="sl-search">
+        <input type="search" placeholder="Search..." aria-label="Search submittals">
+        ${icon('search')}
+      </label>
+      <div class="sd-menu-wrap">
+        <button type="button" class="sd-btn sl-filter" aria-haspopup="true" aria-expanded="false">${icon('filter')}Filter<span class="sd-count" hidden>0</span></button>
+        <div class="sd-menu sl-filter-menu" role="menu">
+          <p>Internal status</p>
+          ${['Draft', 'Assigned', 'In review', 'Ready to publish', 'Published'].map(st => `<label class="sl-check"><input type="checkbox" value="${st}"><span class="chip ${STATUS_TONE[st]}">${st}</span></label>`).join('')}
+        </div>
+      </div>
+    </div>
+    <div class="sl-selbar" hidden><span></span><button type="button" class="sd-btn" data-bulk="Publish">Publish</button><button type="button" class="sd-btn" data-bulk="Run AI review">Run AI review</button><button type="button" class="sl-clear">Clear</button></div>
+    <div class="sl-table-wrap">
+      <div class="sl-scroll" tabindex="0" aria-label="Submittal list (scroll sideways for more columns)">
+        <table class="sl-table">
+          <thead><tr>${COLS.map(([key, label, sortable], i) => `<th class="c-${key}">${i === 0 ? '<span class="sl-cb"><input type="checkbox" aria-label="Select all"></span>' : ''}${sortable === false ? `<span class="sl-th">${label}</span>` : `<button type="button" class="sl-th" data-sort="${key}">${label}${icon('sort', 'sl-sort')}</button>`}</th>`).join('')}</tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>`;
+
+  const tbody = listRoot.querySelector('tbody');
+  const aiCell = r => {
+    if (r.ai === 'running') return `<div class="sl-ai is-running"><button type="button" class="sl-ai-btn stop" data-ai="stop" aria-label="Stop AI review">${icon('stop')}</button><div><span class="chip run">Running...</span><small>Parsing ${r.done}/${r.docs} documents..</small></div><i class="sl-progress" style="--p:${(r.done / r.docs) * 100}%"></i></div>`;
+    if (r.ai === 'passed') return `<div class="sl-ai"><button type="button" class="sl-ai-btn" data-ai="run" aria-label="Re-run AI review">${icon('retry')}</button><div><span class="chip g">Finished - Success</span><small>${r.docs} doc passed</small></div></div>`;
+    if (r.ai === 'failed') return `<div class="sl-ai"><button type="button" class="sl-ai-btn" data-ai="run" aria-label="Re-run AI review">${icon('retry')}</button><div><span class="chip r">Finished - Failed</span><small>1 doc failed</small></div></div>`;
+    return `<div class="sl-ai"><button type="button" class="sl-ai-btn" data-ai="run" aria-label="Run AI review">${icon('play')}</button><div><span class="chip n">Not started</span><small>Not run yet</small></div></div>`;
+  };
+  const rowHtml = r => {
+    const open = listState.open.has(r.id), sel = listState.selected.has(r.id);
+    return `<tr class="${sel ? 'is-selected' : ''}" data-id="${r.id}">
+      <td class="c-id"><span class="sl-cb"><input type="checkbox" ${sel ? 'checked' : ''} aria-label="Select ${r.id}"></span><button type="button" class="sl-expand" aria-expanded="${open}" aria-label="Show details for ${r.id}">${icon('rowChev')}</button>${r.id}</td>
+      <td>${r.gov}</td><td>${r.tr}</td><td>${r.sd}</td><td>${r.spec}</td><td>${r.para}</td>
+      <td class="c-ai">${aiCell(r)}</td>
+      <td class="c-desc"><span>Decking Material Options</span><button type="button" class="sl-open" data-open>Open</button></td>
+      <td class="c-item"><span>${r.item}</span></td>
+      <td>${r.ga === '-' ? '<span class="sl-dash">-</span>' : `<span class="chip ga">${r.ga}</span>`}</td>
+      <td>${r.submit}</td><td>${r.approve}</td>
+      <td class="c-who">${r.who ? `<span class="sl-avatar">${r.who[0]}</span>${r.who[1]}` : '<span class="sl-avatar empty">-</span><span class="sl-muted">Unassigned</span>'}</td>
+      <td class="c-status"><span class="chip ${STATUS_TONE[r.status]}">${r.status}</span><small>Due ${r.due}</small></td>
+    </tr>${open ? `<tr class="sl-detail" data-detail="${r.id}"><td colspan="${COLS.length}"><div class="sl-detail-in">
+      <div><p class="sl-label">Item</p><p>${r.item}</p></div>
+      <div><p class="sl-label">Spec reference</p><p>Section ${r.spec}, paragraph ${r.para}</p></div>
+      <div><p class="sl-label">Documents</p><p>${r.docs} attached</p></div>
+      <div class="sl-detail-actions"><button type="button" class="sd-btn" data-open>View documents</button><button type="button" class="sd-btn sd-btn--primary" data-ai="run">Run AI review</button></div>
+    </div></td></tr>` : ''}`;
+  };
+  const renderList = () => {
+    const q = listState.q.trim().toLowerCase();
+    let rows = SUBMITTALS.filter(r => (!q || [r.id, r.gov, r.tr, r.sd, r.spec, r.para, r.item, r.status, r.who ? r.who[1] : 'unassigned'].join(' ').toLowerCase().includes(q))
+      && (!listState.statuses.size || listState.statuses.has(r.status)));
+    if (listState.sort) rows = [...rows].sort((a, b) => sortValue(a, listState.sort) < sortValue(b, listState.sort) ? -listState.dir : sortValue(a, listState.sort) > sortValue(b, listState.sort) ? listState.dir : 0);
+    tbody.innerHTML = rows.length ? rows.map(rowHtml).join('') : `<tr class="sl-none"><td colspan="${COLS.length}">No submittals match “${listState.q || 'these filters'}”</td></tr>`;
+    // header: sort arrows + select-all state
+    listRoot.querySelectorAll('[data-sort]').forEach(b => {
+      const on = b.dataset.sort === listState.sort;
+      b.dataset.dir = on ? (listState.dir === 1 ? 'asc' : 'desc') : '';
+      b.closest('th').setAttribute('aria-sort', on ? (listState.dir === 1 ? 'ascending' : 'descending') : 'none');
+    });
+    const all = listRoot.querySelector('thead input');
+    const visible = rows.map(r => r.id);
+    const n = visible.filter(id => listState.selected.has(id)).length;
+    all.checked = n > 0 && n === visible.length;
+    all.indeterminate = n > 0 && n < visible.length;
+    const bar = listRoot.querySelector('.sl-selbar');
+    bar.hidden = listState.selected.size === 0;
+    bar.querySelector('span').textContent = `${listState.selected.size} selected`;
+  };
+
+  // Redraw just one row's AI cell so ticking progress never swallows a click elsewhere
+  const updateAi = r => {
+    const cell = tbody.querySelector(`tr[data-id="${r.id}"] td.c-ai`);
+    if (cell) cell.innerHTML = aiCell(r);
+  };
+  const runAi = r => {
+    clearInterval(timers.get(r.id));
+    Object.assign(r, { ai: 'running', done: 0 });
+    renderList();
+    const t = setInterval(() => {
+      r.done += 1;
+      if (r.done >= r.docs) {
+        clearInterval(t);
+        r.ai = r.id % 4 === 3 ? 'failed' : 'passed';
+        toast(`AI review finished for ${r.id}`);
+      }
+      updateAi(r);
+    }, reduceMotion ? 300 : 900);
+    timers.set(r.id, t);
+  };
+
+  listRoot.addEventListener('input', e => {
+    if (e.target.matches('.sl-search input')) { listState.q = e.target.value; renderList(); }
+  });
+  listRoot.addEventListener('change', e => {
+    const t = e.target;
+    if (t.closest('.sl-filter-menu')) {
+      t.checked ? listState.statuses.add(t.value) : listState.statuses.delete(t.value);
+      const c = listRoot.querySelector('.sl-filter .sd-count');
+      c.hidden = !listState.statuses.size; c.textContent = listState.statuses.size;
+    } else if (t.closest('thead')) {
+      const ids = [...tbody.querySelectorAll('tr[data-id]')].map(tr => +tr.dataset.id);
+      ids.forEach(id => t.checked ? listState.selected.add(id) : listState.selected.delete(id));
+    } else if (t.closest('.sl-cb')) {
+      const id = +t.closest('tr').dataset.id;
+      t.checked ? listState.selected.add(id) : listState.selected.delete(id);
+    }
+    renderList();
+  });
+  listRoot.addEventListener('click', e => {
+    const t = e.target.closest('button');
+    if (!t) return;
+    const tr = t.closest('tr[data-id], tr[data-detail]');
+    const r = tr && SUBMITTALS.find(x => x.id === +(tr.dataset.id || tr.dataset.detail));
+    if (t.dataset.sort) {
+      listState.dir = listState.sort === t.dataset.sort ? -listState.dir : 1;
+      listState.sort = t.dataset.sort;
+      renderList();
+    } else if (t.classList.contains('sl-expand')) {
+      listState.open.has(r.id) ? listState.open.delete(r.id) : listState.open.add(r.id);
+      renderList();
+    } else if (t.dataset.ai === 'run') {
+      runAi(r);
+    } else if (t.dataset.ai === 'stop') {
+      clearInterval(timers.get(r.id));
+      r.ai = 'idle';
+      renderList();
+      toast(`AI review stopped for ${r.id}`);
+    } else if (t.hasAttribute('data-open')) {
+      toast(`Opening ${r.id} documents… (demo)`);
+    } else if (t.classList.contains('sl-filter')) {
+      e.stopPropagation();
+      const m = listRoot.querySelector('.sl-filter-menu');
+      const open = !m.classList.contains('is-open');
+      m.classList.toggle('is-open', open);
+      t.setAttribute('aria-expanded', String(open));
+    } else if (t.classList.contains('sl-clear')) {
+      listState.selected.clear();
+      renderList();
+    } else if (t.dataset.bulk) {
+      const ids = [...listState.selected];
+      if (t.dataset.bulk === 'Run AI review') ids.forEach(id => runAi(SUBMITTALS.find(x => x.id === id)));
+      else ids.forEach(id => { SUBMITTALS.find(x => x.id === id).status = 'Published'; });
+      listState.selected.clear();
+      renderList();
+      toast(`${t.dataset.bulk}: ${ids.length} submittal${ids.length === 1 ? '' : 's'}`);
+    }
+  });
+  document.addEventListener('click', e => {
+    const m = listRoot.querySelector('.sl-filter-menu');
+    if (!e.target.closest('.sl-filter-menu') && !e.target.closest('.sl-filter')) {
+      m.classList.remove('is-open');
+      listRoot.querySelector('.sl-filter').setAttribute('aria-expanded', 'false');
+    }
+  });
+  // Fade on the right edge while more columns are hidden
+  const hscroll = listRoot.querySelector('.sl-scroll');
+  const edge = () => listRoot.querySelector('.sl-table-wrap').classList.toggle('at-end', hscroll.scrollLeft + hscroll.clientWidth >= hscroll.scrollWidth - 2);
+  hscroll.addEventListener('scroll', edge, { passive: true });
+  new ResizeObserver(edge).observe(hscroll);
+  renderList();
+  edge();
+  // the running sample keeps "parsing" so the state is always visible
+  const live = SUBMITTALS.find(r => r.ai === 'running');
+  setInterval(() => { if (live.ai === 'running' && !timers.has(live.id)) { live.done = live.done % live.docs + 1 === live.docs ? 1 : live.done + 1; updateAi(live); } }, 2400);
 
   // ---------- reveal-on-scroll effects inside the demo ----------
   const countUp = el => {
