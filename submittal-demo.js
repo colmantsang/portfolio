@@ -54,17 +54,6 @@
     { label: 'May 2026', weeks: ['May 3 - 9', 'May 10 - 16', 'May 17 - 23', 'May 24 - 30', 'May 31+'], items: [2, 5, 4, 6, 2] },
     { label: 'June 2026', weeks: ['May 31 - Jun 6', 'Jun 7 - 13', 'Jun 14 - 20', 'Jun 21 - 27', 'Jun 28+'], items: [1, 3, 7, 2, 1] },
   ];
-  const LIST = [
-    ['SR-003', 'Fire supression form', 'Ironworks', 'Specialist review', 'a', 'May 14'],
-    ['SR-008', 'Structural Steel', 'Ironworks', 'Blocked', 'r', 'May 2'],
-    ['SR-011', 'Roof membrane repair', 'BuildRight', 'Correction needed', 'r', 'May 18'],
-    ['SR-012', 'Door Hardware', 'Apex Fire', 'With Gov', 'g', 'May 15'],
-    ['SR-013', 'Door Hardware (east wing)', 'Apex Fire', 'With Gov', 'g', 'May 18'],
-    ['SR-014', 'HVAC ductwork shop drawings', 'Skyline Electric', 'AI output', 'a', 'May 20'],
-    ['SR-016', 'Generator - 500kW', 'PowerGen', 'With Gov', 'g', 'May 24'],
-    ['SR-019', 'Elevator controls', 'Skyline Electric', 'Assign & schedule', 'a', 'May 27'],
-    ['SR-021', 'Concrete mix design', 'ConcreteCo', 'Closed', 'g', 'Apr 30'],
-  ];
 
   const tone = n => (n === 0 ? 'n' : null);
   const fmtHours = h => (h < 24 ? `${h}h` : `${Math.floor(h / 24)}d ${h % 24}h`);
@@ -245,12 +234,7 @@
         </section>
 
         <section class="sd-view" data-view-panel="list" hidden>
-          <div class="sd-listview">
-            <table>
-              <thead><tr><th>ID</th><th>Item</th><th>Subcontractor</th><th>Status</th><th>Due</th></tr></thead>
-              <tbody>${LIST.map(([id, name, sub, status, t, due]) => `<tr><td class="t-navy">${id}</td><td>${name}</td><td>${sub}</td><td><span class="badge ${t}">${status}</span></td><td>${due}</td></tr>`).join('')}</tbody>
-            </table>
-          </div>
+          <div class="sd-empty">${icon('list')}<strong>List view</strong>Every submittal in one sortable table — not part of this demo.</div>
         </section>
         <section class="sd-view" data-view-panel="board" hidden>
           <div class="sd-empty">${icon('board')}<strong>Board view</strong>Drag submittals between stages — not part of this demo.</div>

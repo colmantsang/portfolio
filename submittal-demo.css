@@ -558,15 +558,7 @@
 .sd-month .sd-btn .ico { width: 20px; height: 20px; color: var(--ink); }
 .sd-month .sd-btn:disabled { opacity: 0.4; cursor: default; transform: none; }
 
-/* List view */
-.sd-listview { margin-top: 25px; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
-.sd-listview table { width: 100%; border-collapse: collapse; font-size: 14px; line-height: 20px; }
-.sd-listview th { height: 44px; padding: 0 16px; background: var(--panel); font-weight: 500; text-align: left; color: var(--sub); border-bottom: 1px solid var(--line); }
-.sd-listview td { height: 52px; padding: 0 16px; border-bottom: 1px solid #eeeeee; white-space: nowrap; }
-.sd-listview tr:last-child td { border-bottom: 0; }
-.sd-listview tbody tr { transition: background 0.15s; }
-.sd-listview tbody tr:hover { background: #f7f9fc; }
-.sd-listview td:nth-child(2) { font-weight: 500; font-size: 16px; }
+/* Empty views (List, Board, Calendar) */
 .sd-empty { display: grid; place-items: center; gap: 8px; margin-top: 25px; padding: 120px 16px; border: 1px dashed var(--dash); border-radius: 4px; color: var(--sub); font-size: 14px; text-align: center; }
 .sd-empty .ico { width: 32px; height: 32px; }
 .sd-empty strong { color: var(--ink); font-size: 16px; font-weight: 500; }
@@ -632,7 +624,6 @@
 .sd.is-compact .sd-bars, .sd.is-compact .sd-weeks { gap: 8px; }
 .sd.is-compact .sd-weeks { font-size: 11px; line-height: 14px; }
 .sd.is-compact .sd-bar b { font-size: 11px; }
-.sd.is-compact .sd-listview { overflow-x: auto; }
 
 @media (max-width: 760px) {
   .demo-box > figure { padding: 14px; }

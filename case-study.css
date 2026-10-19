@@ -549,3 +549,5 @@ html.lightbox-open { overflow: hidden; }
 
 /* Tall, self-framed screenshot (e.g. GovGig project switcher): show it whole, centred */
 .feature img.contain-tall { object-fit: contain; object-position: center; border: 0; background: none; }
+/* Wide screenshot shown in full inside the card's image box (e.g. GovGig schedule) */
+.feature img.contain-full { object-fit: contain; object-position: center; }
