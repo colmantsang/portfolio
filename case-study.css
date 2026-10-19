@@ -548,6 +548,14 @@ html.lightbox-open { overflow: hidden; }
 .lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 /* Tall screenshot (e.g. GovGig project switcher): fill the box and show just the top half */
-.feature img.crop-top { object-fit: cover; object-position: center top; padding: 16px 36px 0; }
+.feature img.crop-top { object-fit: cover; object-position: center top; }
+
+/* GovGig feature cards: white space inside the image frame */
+.features--framed .feature img { padding: 16px 36px 0; }
+.features--framed .feature img.contain-full { padding: 16px; }
 /* Wide screenshot shown in full inside the card's image box (e.g. GovGig schedule) */
 .feature img.contain-full { object-fit: contain; object-position: center; }
+@media (max-width: 760px) {
+  .features--framed .feature img { padding: 10px 16px 0; }
+  .features--framed .feature img.contain-full { padding: 10px; }
+}
