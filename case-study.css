@@ -663,3 +663,6 @@ html.lightbox-open { overflow: hidden; }
   .quote p { font-size: 20px; }
   .feature--wide .ph, .feature--wide img { aspect-ratio: 4 / 3; }
 }
+/* Wide image shown at its own proportions (e.g. GovGig design system) */
+.feature--wide img.natural, .features--framed .feature img.natural { aspect-ratio: auto; height: auto; object-fit: initial; padding: 16px; }
+@media (max-width: 760px) { .features--framed .feature img.natural { padding: 10px; } }
