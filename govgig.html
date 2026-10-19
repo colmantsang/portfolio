@@ -75,7 +75,9 @@
       </dl>
     </section>
 
+    <!-- ============ PROBLEM ============ -->
     <section class="cs-research">
+      <p class="eyebrow">Problem</p>
       <h2>When I started on GovGig I asked, <strong>How do current day-to-day operations look like?</strong></h2>
       <p class="lead">Stakeholder workshop sessions revealed insights into how contractors use software in practice. I found that…</p>
       <ol>
@@ -85,37 +87,178 @@
       </ol>
     </section>
 
-    <section class="features features--framed">
-      <figure class="feature">
-        <button type="button" class="zoom" data-full="assets/govgig/feature-schedule.png" aria-label="Enlarge: Schedule with grouped activities and a three-week Gantt timeline">
-          <img class="contain-full" src="assets/govgig/page/feature-schedule.png" alt="Schedule with grouped activities and a three-week Gantt timeline">
-        </button>
-        <figcaption>Feature-rich scheduling tailored for users from CEOs to Carpenters</figcaption>
-      </figure>
-      <figure class="feature">
-        <button type="button" class="zoom" data-full="assets/govgig/feature-sidenav.png" aria-label="Enlarge: Project switcher in the side navigation">
-          <img class="crop-top" src="assets/govgig/page/feature-sidenav.png" alt="Project switcher in the side navigation: search, pre/post-award filters and project cards">
-        </button>
-        <figcaption>Quick-access projects menu from side-nav</figcaption>
-      </figure>
-      <figure class="feature">
-        <button type="button" class="zoom" data-full="assets/govgig/feature-dashboard.png" aria-label="Enlarge: Welcome dashboard with AI prompt and widgets">
-          <img class="contain-full" src="assets/govgig/page/feature-dashboard.jpg" alt="Welcome dashboard with AI prompt and widgets">
-        </button>
-        <figcaption>AI-powered modular dashboard for scalability and customizable widgets</figcaption>
-      </figure>
-      <figure class="feature">
-        <button type="button" class="zoom" data-full="assets/govgig/feature-profile.png" aria-label="Enlarge: Company business profile page">
-          <img src="assets/govgig/page/feature-profile.jpg" alt="Company business profile page">
-        </button>
-        <figcaption>Customizable social-business profile designed for content heavy companies</figcaption>
+    <!-- ============ ACTION: process ============ -->
+    <section class="cs-text">
+      <p class="eyebrow">Action</p>
+      <h2>How I approached it</h2>
+      <p>I kept contractors in the loop from the first workshop to the last handoff, so every design decision was grounded in how they actually work.</p>
+    </section>
+    <section class="cards-4" aria-label="Design process">
+      <div class="info-card">
+        <span class="step-num">01</span>
+        <h3>Listen</h3>
+        <p>Ran stakeholder workshops with <span class="tbd">[who: e.g. project managers, contracting officers, subcontractors]</span> to understand their day-to-day.</p>
+      </div>
+      <div class="info-card">
+        <span class="step-num">02</span>
+        <h3>Map</h3>
+        <p>Turned workshop notes into end-to-end workflow maps, from pre-award bids to post-award delivery.</p>
+      </div>
+      <div class="info-card">
+        <span class="step-num">03</span>
+        <h3>Prototype</h3>
+        <p>Used AI-powered prototypes and rapid brainstorming sessions to get clickable flows in front of users within <span class="tbd">[X days]</span>.</p>
+      </div>
+      <div class="info-card">
+        <span class="step-num">04</span>
+        <h3>Ship</h3>
+        <p>Led weekly design standups with my team of 2 and handed off dev-ready flows to engineering.</p>
+      </div>
+    </section>
+
+    <!-- ============ ACTION: finding → decision → feature ============ -->
+    <section class="cs-text">
+      <h2>From findings to features</h2>
+      <p>Each finding became a design decision, and each decision shipped as a feature.</p>
+    </section>
+
+    <section class="fdf" aria-labelledby="fdf-1">
+      <div class="fdf-head">
+        <span class="fdf-num">01</span>
+        <div><p class="fdf-label">Finding</p><h3 id="fdf-1">Customization was necessary</h3></div>
+        <div><p class="fdf-label">What I did</p><p>Instead of one fixed home screen, I designed the dashboard as modular widgets each company can arrange around its own work, and gave every company a profile it can shape for the contracts it wants to win.</p></div>
+      </div>
+      <div class="features features--framed">
+        <figure class="feature">
+          <button type="button" class="zoom" data-full="assets/govgig/feature-dashboard.png" aria-label="Enlarge: Welcome dashboard with AI prompt and widgets">
+            <img class="contain-full" src="assets/govgig/page/feature-dashboard.jpg" alt="Welcome dashboard with AI prompt and widgets">
+          </button>
+          <figcaption>AI-powered modular dashboard for scalability and customizable widgets</figcaption>
+        </figure>
+        <figure class="feature">
+          <button type="button" class="zoom" data-full="assets/govgig/feature-profile.png" aria-label="Enlarge: Company business profile page">
+            <img src="assets/govgig/page/feature-profile.jpg" alt="Company business profile page">
+          </button>
+          <figcaption>Customizable social-business profile designed for content heavy companies</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="fdf" aria-labelledby="fdf-2">
+      <div class="fdf-head">
+        <span class="fdf-num">02</span>
+        <div><p class="fdf-label">Finding</p><h3 id="fdf-2">Familiar UX/UI patterns were needed</h3></div>
+        <div><p class="fdf-label">What I did</p><p>I modelled key screens on tools crews already trust. The schedule reads like the Gantt charts and spreadsheets teams use on site, and switching projects works like a familiar search-and-filter menu.</p></div>
+      </div>
+      <div class="features features--framed">
+        <figure class="feature">
+          <button type="button" class="zoom" data-full="assets/govgig/feature-schedule.png" aria-label="Enlarge: Schedule with grouped activities and a three-week Gantt timeline">
+            <img class="contain-full" src="assets/govgig/page/feature-schedule.png" alt="Schedule with grouped activities and a three-week Gantt timeline">
+          </button>
+          <figcaption>Feature-rich scheduling tailored for users from CEOs to Carpenters</figcaption>
+        </figure>
+        <figure class="feature">
+          <button type="button" class="zoom" data-full="assets/govgig/feature-sidenav.png" aria-label="Enlarge: Project switcher in the side navigation">
+            <img class="crop-top" src="assets/govgig/page/feature-sidenav.png" alt="Project switcher in the side navigation: search, pre/post-award filters and project cards">
+          </button>
+          <figcaption>Quick-access projects menu from side-nav</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="fdf" aria-labelledby="fdf-3">
+      <div class="fdf-head">
+        <span class="fdf-num">03</span>
+        <div><p class="fdf-label">Finding</p><h3 id="fdf-3">Scalable, functional solutions were needed</h3></div>
+        <div><p class="fdf-label">What I did</p><p>I built a shared design system of <span class="tbd">[X]</span> components and patterns, so new modules like the Submittal Register below could be designed and shipped without starting from scratch.</p></div>
+      </div>
+      <div class="features features--framed">
+        <figure class="feature feature--wide">
+          <!-- PLACEHOLDER: replace with a design system image -->
+          <div class="ph" role="img" aria-label="Image placeholder: design system overview"><span>Image needed</span><strong>Design system overview: components, colours and type styles</strong></div>
+          <figcaption>A shared design system keeps every new module consistent and fast to build</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ ACTION: deep dive ============ -->
+    <section class="cs-text">
+      <p class="eyebrow">Deep dive</p>
+      <h2>Submittal Register: catching risks before they slip</h2>
+      <p>Submittals were tracked in <span class="tbd">[spreadsheets and email threads]</span>, so a missed government approval window often only surfaced once it had already delayed the schedule.</p>
+      <p>I designed a single register that puts what needs attention first: monthly KPIs, how long items sit at each stage, critical-path risks, the 14-day government approval windows, and how each subcontractor is performing.</p>
+    </section>
+    <section class="features features--framed" style="margin-top:32px">
+      <figure class="feature feature--wide">
+        <!-- PLACEHOLDER: replace with the old submittal tracker -->
+        <div class="ph" role="img" aria-label="Image placeholder: the previous submittal tracker"><span>Image needed</span><strong>Before: the previous submittal tracker (spreadsheet or old tool)</strong></div>
+        <figcaption>Before: <span class="tbd">[describe the old way submittals were tracked]</span></figcaption>
       </figure>
     </section>
     <section class="demo-box" aria-labelledby="demo-caption">
       <figure>
         <div data-submittal-demo></div>
-        <figcaption id="demo-caption"><span>Submittal Register summary: scroll it, sort it, switch months and views</span><span class="demo-tag">Interactive</span></figcaption>
+        <figcaption id="demo-caption"><span>After: the Submittal Register summary. Scroll it, sort it, switch months and views</span><span class="demo-tag">Interactive</span></figcaption>
       </figure>
+    </section>
+
+    <!-- ============ ACTION: AI ============ -->
+    <section class="cs-text">
+      <p class="eyebrow">Designing with AI</p>
+      <h2>AI that fits into the workflow, not on top of it</h2>
+      <p>Contractors don't have time to learn a new way of working, so I placed AI where the work already happens and kept a person in charge of every decision.</p>
+    </section>
+    <section class="cards-3" aria-label="AI features">
+      <div class="info-card">
+        <h3>Ask GovGig</h3>
+        <p>Always one click away in the top bar, answering questions using the project's own documents.</p>
+      </div>
+      <div class="info-card">
+        <h3>Playbook agents</h3>
+        <p>Run specification checks section by section and sort findings by priority, so reviewers start with what matters most.</p>
+      </div>
+      <div class="info-card">
+        <h3>A human in the loop</h3>
+        <p>AI output is its own stage in the submittal pipeline, so a specialist always reviews it before anything goes to the government.</p>
+      </div>
+    </section>
+    <section class="features features--framed" style="margin-top:24px">
+      <figure class="feature feature--wide">
+        <button type="button" class="zoom" data-full="assets/govgig/screen-playbook.png" aria-label="Enlarge: Specification validation playbook agent">
+          <img src="assets/govgig/page/screen-playbook.jpg" alt="Specification validation playbook agent with findings sorted by priority">
+        </button>
+        <figcaption>Specification validation agent: findings sorted by priority, with a clear next step for each</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ RESULTS ============ -->
+    <section class="cs-text">
+      <p class="eyebrow">Results</p>
+      <h2>The impact so far</h2>
+      <p>GovGig is an end-to-end construction management platform, currently in its seed stage and gaining users month over month.</p>
+    </section>
+    <section class="stats" aria-label="Key results">
+      <!-- PLACEHOLDERS: replace each value and label with real numbers -->
+      <div class="stat"><b><span class="tbd">[XX]</span></b><span>companies actively using GovGig</span></div>
+      <div class="stat"><b><span class="tbd">[XX%]</span></b><span>month-over-month user growth</span></div>
+      <div class="stat"><b><span class="tbd">[XX%]</span></b><span>faster submittal reviews</span></div>
+      <div class="stat"><b><span class="tbd">[X]</span></b><span>modules designed and shipped</span></div>
+    </section>
+    <section class="quote">
+      <blockquote>
+        <p><span class="tbd">[A quote from a contractor or stakeholder about GovGig]</span></p>
+        <footer><span class="tbd">[Name, role, company]</span></footer>
+      </blockquote>
+    </section>
+
+    <!-- ============ REFLECTION ============ -->
+    <section class="cs-text">
+      <p class="eyebrow">Reflection</p>
+      <h2>What I learned</h2>
+      <p>Designing for subject matter experts meant earning trust before adding anything new. The more a screen felt like a tool crews already used, the faster they adopted it.</p>
+      <p>Leading a team of 2 taught me <span class="tbd">[a lesson about leading the design team]</span>.</p>
+      <h3>What's next</h3>
+      <p><span class="tbd">[What you'd design or measure next as GovGig grows]</span></p>
     </section>
   </main>
 
