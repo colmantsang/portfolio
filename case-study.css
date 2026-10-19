@@ -546,3 +546,6 @@ html.lightbox-open { overflow: hidden; }
 }
 .lightbox-close:hover { background: rgba(255, 255, 255, 0.28); }
 .lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Tall, self-framed screenshot (e.g. GovGig project switcher): show it whole, centred */
+.feature img.contain-tall { object-fit: contain; object-position: center; border: 0; background: none; }

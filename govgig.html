@@ -8,9 +8,10 @@
   <link rel="icon" href="assets/avatar.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&family=Inter:wght@500&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;600;700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="case-study.css">
+  <link rel="stylesheet" href="submittal-demo.css">
   <link rel="stylesheet" href="about.css">
 </head>
 <body class="plain">
@@ -92,8 +93,8 @@
         <figcaption>Customizable projects space with cards &amp; robust filtering capabilities</figcaption>
       </figure>
       <figure class="feature">
-        <button type="button" class="zoom" data-full="assets/govgig/feature-sidenav.png" aria-label="Enlarge: Projects menu in the side navigation">
-          <img src="assets/govgig/feature-sidenav.png" alt="Projects menu in the side navigation">
+        <button type="button" class="zoom" data-full="assets/govgig/feature-sidenav.png" aria-label="Enlarge: Project switcher in the side navigation">
+          <img class="contain-tall" src="assets/govgig/page/feature-sidenav.png" alt="Project switcher in the side navigation: search, pre/post-award filters and project cards">
         </button>
         <figcaption>Quick-access projects menu from side-nav</figcaption>
       </figure>
@@ -110,9 +111,16 @@
         <figcaption>Customizable social-business profile designed for content heavy companies</figcaption>
       </figure>
     </section>
+    <section class="demo-box" aria-labelledby="demo-caption">
+      <figure>
+        <div data-submittal-demo></div>
+        <figcaption id="demo-caption"><span>Submittal Register summary: scroll it, sort it, switch months and views</span><span class="demo-tag">Interactive</span></figcaption>
+      </figure>
+    </section>
   </main>
 
   <script src="about.js"></script>
   <script src="lightbox.js"></script>
+  <script src="submittal-demo.js"></script>
 </body>
 </html>
