@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="68.0001" height="62" viewBox="0 0 68.0001 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Supergraphic">
+<mask id="mask0_0_7" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="68" height="62">
+<rect id="Clipping path" width="68" height="62" fill="#EBE7DB"/>
+</mask>
+<g mask="url(#mask0_0_7)">
+<path id="Supergraphic_2" d="M70.7198 -31.4443H18.4116H-7.36708C-5.11458 -13.2528 0.391551 3.27863 7.71219 17.32C17.2228 35.4423 29.987 50.1754 44.7534 61.1733C70.7198 41.5984 91.6806 8.88134 96.7487 -31.4443H70.7198Z" fill="#FEF6DC"/>
+<path id="Supergraphic_3" d="M44.5655 43.5584C57.8928 28.4104 67.2157 9.45799 70.7196 -12.3995H18.4114C20.2885 -0.571552 24.0427 11.0489 29.7991 22.0468C33.8661 30.0704 39.1219 37.264 44.5655 43.5584Z" fill="#1080A6"/>
+</g>
+</g>
+</svg>

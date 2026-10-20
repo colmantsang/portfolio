@@ -75,27 +75,27 @@ a { color: inherit; text-decoration: none; }
 .nav-links a:hover { opacity: 0.6; }
 .nav-links .icon { display: flex; width: 24px; height: 24px; align-items: center; justify-content: center; }
 
-/* Hero */
+/* Hero (Figma "Homepage – Desktop": left-aligned in the 610px column) */
 .hero {
-  max-width: 513px;
-  margin: 66px auto 0;
-  padding: 0 16px;
-  text-align: center;
+  max-width: 610px;
+  margin: 88px auto 0;
+  padding: 0 24px;
 }
 
 .hero h1 {
   margin: 0;
   font-family: "Space Grotesk", sans-serif;
   font-weight: 700;
-  font-size: 40px;
+  font-size: 32px;
   line-height: 1.2;
   color: #000;
 }
 
 .hero p {
   margin: 16px 0 0;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.2;
+  color: var(--ink);
 }
 
 /* Projects */
@@ -103,16 +103,15 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   flex-direction: column;
   gap: 32px;
-  max-width: calc(var(--content) + 32px);
+  max-width: 610px;
   margin: 32px auto 64px;
-  padding: 0 16px;
 }
 
 .card {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 32px;
+  gap: 33px;
+  padding: 24px;
   background: transparent;
   border-radius: 28px;
   transition: transform 0.3s ease, background-color 0.3s ease;
@@ -121,28 +120,11 @@ a { color: inherit; text-decoration: none; }
 /* Only devices that can hover get the hover state, so taps on phones don't leave a card highlighted */
 @media (hover: hover) {
   .card:hover { background: var(--card); transform: translateY(-4px); }
+  .card:hover .shot { box-shadow: 0 20px 40px rgba(0, 45, 70, 0.24); }
 }
 .card:focus-visible { background: var(--card); transform: translateY(-4px); outline: 2px solid var(--blue); outline-offset: 4px; }
 
-
-.frame {
-  margin-bottom: 29px;
-  padding: 14px;
-  background: var(--frame);
-  border-radius: 16px;
-  box-shadow: 0 16px 32px rgba(0, 45, 70, 0.18);
-  overflow: hidden;
-}
-
-.frame video {
-  display: block;
-  width: 100%;
-  aspect-ratio: 485 / 344;
-  object-fit: fill;
-  border-radius: 4px;
-}
-
-.frame--tall video { aspect-ratio: 485 / 447; object-fit: cover; }
+.card-text { display: flex; flex-direction: column; gap: 4px; }
 
 .card h2 {
   margin: 0;
@@ -157,21 +139,56 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
   font-size: 20px;
   line-height: 1.2;
+  color: var(--ink);
+}
+
+/* Project artwork: a 562 x 400 frame; every layer is positioned in % so it scales with the card */
+.shot {
+  position: relative;
+  aspect-ratio: 562 / 400;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(0, 45, 70, 0.18);
+  transition: box-shadow 0.3s ease;
+}
+.shot > img, .shot > span { position: absolute; display: block; }
+.shot img { max-width: none; }
+
+.shot--govgig { background: #253566; }
+.s-govgig-logo { left: 35.59%; top: 8%; width: 28.83%; height: auto; }
+.s-govgig-mac { left: 14.41%; top: 29%; width: 71.17%; height: 62%; object-fit: cover; }
+.s-govgig-phone { left: 64.41%; top: 36.5%; width: 23.49%; height: 59.5%; object-fit: cover; }
+
+.shot--ontario { background: #1a1a1a; }
+.s-ontario-bar { inset: 0 0 auto; height: 25%; background: #404040; }
+.s-ontario-logo { left: 2.85%; top: 3.5%; width: 31.31%; height: 17.5%; }
+.s-ontario-graphic { right: 0; top: 0; width: 12.1%; height: 15.5%; }
+.s-ontario-ies { left: 50%; top: 37%; width: 68.22%; height: 70.7%; transform: translateX(-50%); object-fit: cover; }
+.s-ontario-phone { left: 69.4%; top: 56.5%; width: 19.12%; padding: 1.07%; border-radius: 12px; background: #000; }
+.s-ontario-phone img { display: block; width: 100%; height: auto; aspect-ratio: 95.46 / 202.5; object-fit: cover; border-radius: 6px; }
+
+.shot--iconnected { background: #dee8d6; }
+.s-ic-logo { left: 50%; top: 8%; width: 33.45%; height: 9.5%; transform: translateX(-50%); object-fit: cover; }
+.s-ic-display { left: 11.57%; top: 24.5%; width: 76.87%; height: 89.5%; overflow: hidden; }
+.s-ic-display img { position: absolute; left: -2.02%; top: 0; width: 101.96%; height: 100%; }
+.s-ic-bezel { left: 13.29%; right: 13.49%; top: 26.96%; bottom: 14.52%; border: 10px solid #000; border-radius: 1px; background: #000; }
+.s-ic-screen { left: 12.87%; top: 27.04%; width: 73.93%; height: 58.43%; overflow: hidden; }
+.s-ic-screen img { position: absolute; left: 0; top: 0; width: 100%; height: 109.46%; }
+
+@media (max-width: 640px) {
+  .projects { margin: 16px 16px 48px; gap: 16px; }
+  .card { gap: 20px; padding: 16px; }
+  .hero { padding: 0 32px; margin-top: 48px; }
 }
 
 @media (max-width: 600px) {
   .nav { padding: 10px 16px; }
   .nav-avatar img { width: 52px; height: 52px; }
-  .hero h1 { font-size: 34px; }
-  .hero p { font-size: 20px; }
-  .card { padding: 20px; }
+  .hero h1 { font-size: 28px; }
+  .hero p { font-size: 18px; }
   .card h2 { font-size: 21px; }
   .card p { font-size: 18px; }
-}
-
-.frame img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 4px;
+  .shot { border-radius: 12px; }
+  .s-ontario-phone { border-radius: 8px; }
+  .s-ic-bezel { border-width: 6px; }
 }
